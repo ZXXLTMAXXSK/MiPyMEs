@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurante — ReservaPro</title>
+  <title>Restaurante Sabores — ReservaPro</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animation.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -14,10 +14,23 @@
       --color-primary-light: #dc2626;
       --color-accent: #d97706;
     }
+
+    .table-node {
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+    .table-node.occupied {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .table-node:hover:not(.occupied) {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
-  <header class="navbar scrolled">
+  <header class="navbar scrolled" id="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="logo">
         <span class="logo-mark" style="background: linear-gradient(135deg,#b91c1c,#d97706);">S</span>
@@ -25,27 +38,29 @@
       </a>
       <nav class="nav-links">
         <a href="index.html">Inicio</a>
-        <a href="#menu">Menú</a>
         <a href="#mesas">Reservar mesa</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <div class="nav-actions">
+      <!-- Contenedor dinámico de sesión alimentado por navigation.js -->
+      <div id="navAuthContainer" class="nav-actions">
         <a href="#mesas" class="btn btn-primary btn-sm">Reservar mesa</a>
       </div>
     </div>
   </header>
 
   <main style="padding-top: 5rem;">
+    <!-- Hero -->
     <section class="section" style="background: linear-gradient(135deg, #b91c1c, #d97706); color:#fff; padding-block: clamp(3rem, 6vw, 5rem);">
       <div class="container text-center">
         <h1 style="color:#fff;" class="reveal">Cocina que<br /><span style="color:#fde68a;">abraza.</span></h1>
         <p style="color: rgba(255,255,255,.85); max-width: 540px; margin: 1rem auto 2rem; font-size: 1.0625rem;" class="reveal reveal-delay-1">
-          Ingredientes frescos, recetas tradicionales y un ambiente cálido. Reserva tu mesa y disfruta.
+          Ingredientes frescos, recetas tradicionales y un ambiente cálido. Reserva tu mesa en tiempo real y disfruta.
         </p>
-        <a href="#mesas" class="btn btn-lg reveal reveal-delay-2" style="background:#fff; color:#b91c1c;">Reservar mesa</a>
+        <a href="#mesas" class="btn btn-lg reveal reveal-delay-2" style="background:#fff; color:#b91c1c; font-weight: 600;">Reservar mesa</a>
       </div>
     </section>
 
+    <!-- Mapa de Mesas -->
     <section class="section" id="mesas">
       <div class="container">
         <div class="section-header reveal">
@@ -53,43 +68,46 @@
           <p>Elige la mesa y zona que prefieras para tu visita.</p>
         </div>
 
-        <div style="display:grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1000px; margin-inline: auto;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin-inline: auto;">
+          
+          <!-- Mapa interactivo -->
           <div class="reveal">
             <h3 style="margin-bottom:1rem;">Zona principal</h3>
-            <div class="table-map">
-              <div class="table-node available" data-table="1">M1<br><span style="font-size:.625rem; font-weight:400;">2p</span></div>
-              <div class="table-node available" data-table="2">M2<br><span style="font-size:.625rem; font-weight:400;">2p</span></div>
-              <div class="table-node occupied" data-table="3">M3<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
-              <div class="table-node available" data-table="4">M4<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
-              <div class="table-node selected" data-table="5">M5<br><span style="font-size:.625rem; font-weight:400;">6p</span></div>
-              <div class="table-node available" data-table="6">M6<br><span style="font-size:.625rem; font-weight:400;">6p</span></div>
-              <div class="table-node occupied" data-table="7">M7<br><span style="font-size:.625rem; font-weight:400;">8p</span></div>
-              <div class="table-node available" data-table="8">M8<br><span style="font-size:.625rem; font-weight:400;">8p</span></div>
+            <div class="table-map" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem;">
+              <div class="table-node available" data-table="1" data-capacity="2 personas">M1<br><span style="font-size:.625rem; font-weight:400;">2p</span></div>
+              <div class="table-node available" data-table="2" data-capacity="2 personas">M2<br><span style="font-size:.625rem; font-weight:400;">2p</span></div>
+              <div class="table-node occupied" data-table="3" data-capacity="4 personas">M3<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
+              <div class="table-node available" data-table="4" data-capacity="4 personas">M4<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
+              <div class="table-node selected" data-table="5" data-capacity="6 personas">M5<br><span style="font-size:.625rem; font-weight:400;">6p</span></div>
+              <div class="table-node available" data-table="6" data-capacity="6 personas">M6<br><span style="font-size:.625rem; font-weight:400;">6p</span></div>
+              <div class="table-node occupied" data-table="7" data-capacity="8 personas">M7<br><span style="font-size:.625rem; font-weight:400;">8p</span></div>
+              <div class="table-node available" data-table="8" data-capacity="8 personas">M8<br><span style="font-size:.625rem; font-weight:400;">8p</span></div>
             </div>
 
             <h3 style="margin: 1.5rem 0 1rem;">Terraza</h3>
-            <div class="table-map">
-              <div class="table-node available" data-table="9">T1<br><span style="font-size:.625rem; font-weight:400;">2p</span></div>
-              <div class="table-node available" data-table="10">T2<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
-              <div class="table-node occupied" data-table="11">T3<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
-              <div class="table-node available" data-table="12">T4<br><span style="font-size:.625rem; font-weight:400;">6p</span></div>
+            <div class="table-map" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem;">
+              <div class="table-node available" data-table="9" data-capacity="2 personas">T1<br><span style="font-size:.625rem; font-weight:400;">2p</span></div>
+              <div class="table-node available" data-table="10" data-capacity="4 personas">T2<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
+              <div class="table-node occupied" data-table="11" data-capacity="4 personas">T3<br><span style="font-size:.625rem; font-weight:400;">4p</span></div>
+              <div class="table-node available" data-table="12" data-capacity="6 personas">T4<br><span style="font-size:.625rem; font-weight:400;">6p</span></div>
             </div>
 
-            <div class="table-legend">
+            <div class="table-legend" style="display: flex; gap: 15px; margin-top: 1rem; font-size: 0.875rem;">
               <div class="legend-item"><span class="legend-dot available"></span> Disponible</div>
               <div class="legend-item"><span class="legend-dot selected"></span> Seleccionada</div>
               <div class="legend-item"><span class="legend-dot occupied"></span> Ocupada</div>
             </div>
           </div>
 
-          <div class="panel reveal reveal-delay-1">
-            <div class="panel-header">
+          <!-- Panel de confirmación -->
+          <div class="panel reveal reveal-delay-1" style="border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 12px; background: #fff;">
+            <div class="panel-header" style="margin-bottom: 1rem;">
               <h3>Detalles de la reserva</h3>
             </div>
             <div class="panel-body">
-              <div class="form-group">
+              <div class="form-group" style="margin-bottom: 1rem;">
                 <label for="personas" class="form-label">Número de personas</label>
-                <select id="personas" class="form-select">
+                <select id="personas" class="form-select" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid var(--color-border);">
                   <option>1 persona</option>
                   <option>2 personas</option>
                   <option selected>3 personas</option>
@@ -99,42 +117,46 @@
                 </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" style="margin-bottom: 1rem;">
                 <label for="fecha" class="form-label">Fecha</label>
-                <input type="date" id="fecha" class="form-input" value="2025-12-11" />
+                <input type="date" id="fecha" class="form-input" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid var(--color-border);" />
               </div>
 
-              <div class="form-group">
+              <div class="form-group" style="margin-bottom: 1rem;">
                 <label for="hora" class="form-label">Hora</label>
-                <select id="hora" class="form-select">
-                  <option>12:00</option>
-                  <option>12:30</option>
-                  <option selected>13:00</option>
-                  <option>13:30</option>
-                  <option>14:00</option>
-                  <option>19:00</option>
-                  <option>20:00</option>
+                <select id="hora" class="form-select" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <option>12:00 PM</option>
+                  <option>12:30 PM</option>
+                  <option selected>01:00 PM</option>
+                  <option>01:30 PM</option>
+                  <option>02:00 PM</option>
+                  <option>07:00 PM</option>
+                  <option>08:00 PM</option>
                 </select>
               </div>
 
-              <div class="summary-list" style="margin-top:1rem;">
-                <div class="summary-row">
-                  <span>Mesa seleccionada</span>
-                  <span id="mesaSeleccionada">M5 · Principal</span>
+              <div class="summary-list" style="margin-top:1.5rem; background: var(--color-bg-soft, #f8fafc); padding: 1rem; border-radius: 8px;">
+                <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span>Mesa seleccionada:</span>
+                  <strong id="mesaSeleccionada">M5 · Principal</strong>
                 </div>
-                <div class="summary-row">
-                  <span>Capacidad</span>
-                  <span>6 personas</span>
+                <div class="summary-row" style="display: flex; justify-content: space-between;">
+                  <span>Capacidad máx:</span>
+                  <strong id="capacidadMesa">6 personas</strong>
                 </div>
               </div>
 
-              <button class="btn btn-primary btn-block btn-lg mt-md" id="reservarMesa">Confirmar reserva</button>
+              <button class="btn btn-primary btn-block btn-lg" id="reservarMesa" style="width: 100%; margin-top: 1.5rem; background: var(--color-primary); color: #fff; padding: 0.75rem; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                Confirmar reserva
+              </button>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- Contacto -->
     <section class="section" id="contacto" style="background: var(--color-bg-soft);">
       <div class="container text-center reveal">
         <h2>Te esperamos</h2>
@@ -160,5 +182,87 @@
   <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/animations.js"></script>
+
+  <!-- Lógica interactiva del mapa de restaurante -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ajustar fecha por defecto a hoy
+      const dateInput = document.getElementById('fecha');
+      if (dateInput) {
+        dateInput.value = new Date().toISOString().split('T')[0];
+      }
+
+      const tableNodes = document.querySelectorAll('.table-node');
+      const labelMesa = document.getElementById('mesaSeleccionada');
+      const labelCapacidad = document.getElementById('capacidadMesa');
+      const btnReservar = document.getElementById('reservarMesa');
+
+      let selectedTable = 'M5';
+
+      tableNodes.forEach(node => {
+        node.addEventListener('click', () => {
+          if (node.classList.contains('occupied')) {
+            if (window.ToastManager) window.ToastManager.show('Esta mesa ya está reservada.', 'error');
+            return;
+          }
+
+          // Desmarcar selecciones anteriores
+          tableNodes.forEach(n => {
+            if (!n.classList.contains('occupied')) {
+              n.classList.remove('selected');
+              n.classList.add('available');
+            }
+          });
+
+          // Marcar nueva selección
+          node.classList.remove('available');
+          node.classList.add('selected');
+
+          const tableId = node.textContent.trim().split('\n')[0];
+          const capacity = node.dataset.capacity || '4 personas';
+          const isTerraza = node.dataset.table > 8;
+          const zone = isTerraza ? 'Terraza' : 'Principal';
+
+          selectedTable = `${tableId} · ${zone}`;
+          if (labelMesa) labelMesa.textContent = selectedTable;
+          if (labelCapacidad) labelCapacidad.textContent = capacity;
+        });
+      });
+
+      // Confirmación y guardado en localStorage
+      btnReservar?.addEventListener('click', () => {
+        const personas = document.getElementById('personas')?.value || '2 personas';
+        const fecha = document.getElementById('fecha')?.value || 'Hoy';
+        const hora = document.getElementById('hora')?.value || '13:00';
+
+        const reservationData = {
+          category: 'restaurante',
+          service: `Restaurante (Mesa ${selectedTable} - ${personas})`,
+          date: fecha,
+          time: hora
+        };
+
+        if (window.StorageManager) {
+          window.StorageManager.addReservation(reservationData);
+        }
+
+        // Cambiar la mesa seleccionada a ocupada visualmente
+        const activeNode = document.querySelector('.table-node.selected');
+        if (activeNode) {
+          activeNode.classList.remove('selected');
+          activeNode.classList.add('occupied');
+        }
+
+        if (window.ToastManager) {
+          window.ToastManager.show(`Mesa ${selectedTable} reservada correctamente para ${personas}.`, 'success');
+        }
+
+        // Ofrecer navegación al Dashboard
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1200);
+      });
+    });
+  </script>
 </body>
 </html>

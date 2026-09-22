@@ -3,154 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barbería — ReservaPro</title>
+  <title>Reservar Cita — ReservaPro</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animation.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-  <style>
-    /* Variación de color para el módulo barbería */
-    :root {
-      --color-primary: #c9a227;
-      --color-primary-dark: #a8871a;
-      --color-primary-light: #dbb63d;
-      --color-accent: #0f172a;
-    }
-  </style>
 </head>
 <body>
-  <header class="navbar scrolled">
+  <header class="navbar scrolled" id="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="logo">
-        <span class="logo-mark" style="background: linear-gradient(135deg,#0f172a,#c9a227);">B</span>
-        <span>Barbería Premium</span>
+        <span class="logo-mark">R</span>
+        <span>ReservaPro</span>
       </a>
       <nav class="nav-links">
         <a href="index.html">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#equipo">Equipo</a>
-        <a href="#horarios">Horarios</a>
+        <a href="barberia.html">Barbería</a>
+        <a href="restaurante.html">Restaurante</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="iglesia.html">Iglesia</a>
       </nav>
-      <div class="nav-actions">
-        <a href="reservas.html" class="btn btn-primary btn-sm">Reservar cita</a>
-      </div>
+      <div id="navAuthContainer" class="nav-actions"></div>
     </div>
   </header>
 
-  <main style="padding-top: 5rem;">
-    <!-- Hero barbería -->
-    <section class="section" style="background: linear-gradient(135deg, #0f172a, #1e293b); color:#fff; padding-block: clamp(3rem, 6vw, 5rem);">
-      <div class="container text-center">
-        <h1 style="color:#fff;" class="reveal">Estilo clásico,<br /><span style="color:#c9a227;">resultados modernos.</span></h1>
-        <p style="color: rgba(255,255,255,.75); max-width: 540px; margin: 1rem auto 2rem; font-size: 1.0625rem;" class="reveal reveal-delay-1">
-          Reserva tu cita en segundos. Elige tu barbero favorito, el servicio que necesitas y el horario que mejor te convenga.
-        </p>
-        <a href="reservas.html" class="btn btn-primary btn-lg reveal reveal-delay-2">Reservar ahora</a>
+  <main style="padding-top: 6rem; padding-bottom: 4rem;">
+    <div class="container" style="max-width: 800px;">
+      
+      <div class="text-center" style="margin-bottom: 2.5rem;">
+        <h1>Agendar Reserva</h1>
+        <p class="text-muted">Elige los detalles de tu cita paso a paso</p>
       </div>
-    </section>
 
-    <!-- Servicios -->
-    <section class="section" id="servicios">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>Nuestros servicios</h2>
-          <p>Tarifas claras, resultados profesionales.</p>
+      <!-- ============ INDICADOR DE PASOS (STEPS) ============ -->
+      <div class="booking-steps-wrapper" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 3rem;">
+        <div class="booking-step active" data-step="1">
+          <div class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">1</div>
+          <span style="font-size: 0.85rem; margin-top: 0.5rem; display: block; text-align: center;">Servicio</span>
         </div>
+        <div class="booking-step-connector" style="flex: 1; height: 2px; background: var(--color-border); margin: 0 10px;"></div>
+        
+        <div class="booking-step" data-step="2">
+          <div class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-bg-soft); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">2</div>
+          <span style="font-size: 0.85rem; margin-top: 0.5rem; display: block; text-align: center;">Fecha</span>
+        </div>
+        <div class="booking-step-connector" style="flex: 1; height: 2px; background: var(--color-border); margin: 0 10px;"></div>
 
-        <div class="solutions-grid">
-          <article class="solution-card reveal" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-            </div>
-            <h3>Corte clásico</h3>
-            <p>30 minutos · Acabado profesional con navaja y tijera.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$15.000</div>
-          </article>
+        <div class="booking-step" data-step="3">
+          <div class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-bg-soft); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">3</div>
+          <span style="font-size: 0.85rem; margin-top: 0.5rem; display: block; text-align: center;">Hora</span>
+        </div>
+        <div class="booking-step-connector" style="flex: 1; height: 2px; background: var(--color-border); margin: 0 10px;"></div>
 
-          <article class="solution-card reveal reveal-delay-1" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-            </div>
-            <h3>Corte + Barba</h3>
-            <p>45 minutos · Corte personalizado + perfilado de barba.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$22.000</div>
-          </article>
-
-          <article class="solution-card reveal reveal-delay-2" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <h3>Color completo</h3>
-            <p>90 minutos · Tinte profesional y tratamiento capilar.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$45.000</div>
-          </article>
-
-          <article class="solution-card reveal reveal-delay-3" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8h10c0-3 2-5 2-8a7 7 0 0 0-7-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
-            </div>
-            <h3>Tratamiento facial</h3>
-            <p>60 minutos · Limpieza profunda e hidratación.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$35.000</div>
-          </article>
+        <div class="booking-step" data-step="4">
+          <div class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-bg-soft); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">4</div>
+          <span style="font-size: 0.85rem; margin-top: 0.5rem; display: block; text-align: center;">Confirmación</span>
         </div>
       </div>
-    </section>
 
-    <!-- Equipo -->
-    <section class="section" id="equipo" style="background: var(--color-bg-soft);">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>Nuestro equipo</h2>
-          <p>Profesionales con años de experiencia.</p>
+      <!-- ============ CONTENEDOR DE PANELES INTERACTIVOS ============ -->
+      <div class="booking-content panel" style="padding: 2rem; border: 1px solid var(--color-border); border-radius: 12px; background: #fff;">
+
+        <!-- PASO 1: SERVICIO Y TIENDA -->
+        <div class="booking-panel active" data-panel="1">
+          <h3>1. Selecciona el Servicio o Tienda</h3>
+          <p class="text-muted" style="margin-bottom: 1.5rem;">Elige para qué área deseas agendar tu cita:</p>
+          
+          <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+            <div class="select-card" data-value="Barbería - Corte Clásico" style="border: 1px solid var(--color-border); padding: 1.25rem; border-radius: 8px; cursor: pointer;">
+              <h4>💈 Barbería</h4>
+              <p style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">Corte, barba y estilismo</p>
+            </div>
+            <div class="select-card" data-value="Restaurante - Reserva de Mesa" style="border: 1px solid var(--color-border); padding: 1.25rem; border-radius: 8px; cursor: pointer;">
+              <h4>🍽️ Restaurante</h4>
+              <p style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">Reserva de mesa y experiencia gastronómica</p>
+            </div>
+            <div class="select-card" data-value="Eventos - Acceso General" style="border: 1px solid var(--color-border); padding: 1.25rem; border-radius: 8px; cursor: pointer;">
+              <h4>🎉 Eventos</h4>
+              <p style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">Asistencia a eventos y talleres</p>
+            </div>
+            <div class="select-card" data-value="Iglesia - Registro de Servicio" style="border: 1px solid var(--color-border); padding: 1.25rem; border-radius: 8px; cursor: pointer;">
+              <h4>⛪ Iglesia</h4>
+              <p style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">Registro a cultos y reuniones</p>
+            </div>
+          </div>
+
+          <div style="text-align: right;">
+            <button class="btn btn-primary" data-next="2" disabled>Continuar &rarr;</button>
+          </div>
         </div>
 
-        <div class="solutions-grid">
-          <article class="solution-card reveal text-center" style="--card-accent:#c9a227;">
-            <div class="avatar avatar-lg" style="margin: 0 auto 1rem; width:72px; height:72px; font-size:1.5rem;">JP</div>
-            <h3>Juan Pérez</h3>
-            <p>Barbero principal · 12 años de experiencia</p>
-          </article>
+        <!-- PASO 2: SELECCIÓN DE DÍA/FECHA -->
+        <div class="booking-panel" data-panel="2" style="display: none;">
+          <h3>2. Selecciona el Día</h3>
+          <p class="text-muted" style="margin-bottom: 1.5rem;">Elige una fecha disponible en la tienda:</p>
 
-          <article class="solution-card reveal reveal-delay-1 text-center" style="--card-accent:#c9a227;">
-            <div class="avatar avatar-lg" style="margin: 0 auto 1rem; width:72px; height:72px; font-size:1.5rem; background: linear-gradient(135deg,#0f172a,#c9a227);">MG</div>
-            <h3>María González</h3>
-            <p>Especialista en color · 8 años</p>
-          </article>
+          <div style="margin-bottom: 2rem;">
+            <input type="date" id="bookingDateInput" class="form-control" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--color-border); font-size: 1rem;" />
+          </div>
 
-          <article class="solution-card reveal reveal-delay-2 text-center" style="--card-accent:#c9a227;">
-            <div class="avatar avatar-lg" style="margin: 0 auto 1rem; width:72px; height:72px; font-size:1.5rem; background: linear-gradient(135deg,#c9a227,#0f172a);">CR</div>
-            <h3>Carlos Ruiz</h3>
-            <p>Barbero & estilista · 6 años</p>
-          </article>
+          <div style="display: flex; justify-content: space-between;">
+            <button class="btn btn-outline" data-prev="1">&larr; Atrás</button>
+            <button class="btn btn-primary" data-next="3" disabled>Continuar &rarr;</button>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="section" id="horarios">
-      <div class="container text-center reveal">
-        <h2>Reserva tu cita hoy</h2>
-        <p class="text-soft" style="max-width: 480px; margin: 1rem auto 2rem;">
-          Lun a Sáb: 9:00 - 20:00 · Dom: Cerrado
-        </p>
-        <a href="reservas.html" class="btn btn-primary btn-lg">Reservar cita</a>
-      </div>
-    </section>
-  </main>
+        <!-- PASO 3: SELECCIÓN DE HORARIO -->
+        <div class="booking-panel" data-panel="3" style="display: none;">
+          <h3>3. Selecciona la Hora</h3>
+          <p class="text-muted" style="margin-bottom: 1.5rem;">Horarios de atención disponibles:</p>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-        <span>© 2025 Barbería Premium · Powered by ReservaPro</span>
-        <a href="index.html">Volver al inicio</a>
+          <div class="time-slots-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.75rem; margin-bottom: 2rem;">
+            <button class="time-slot btn btn-outline">09:00 AM</button>
+            <button class="time-slot btn btn-outline">10:30 AM</button>
+            <button class="time-slot btn btn-outline">12:00 PM</button>
+            <button class="time-slot btn btn-outline">03:00 PM</button>
+            <button class="time-slot btn btn-outline">04:30 PM</button>
+            <button class="time-slot btn btn-outline">06:00 PM</button>
+          </div>
+
+          <div style="display: flex; justify-content: space-between;">
+            <button class="btn btn-outline" data-prev="2">&larr; Atrás</button>
+            <button class="btn btn-primary" data-next="4" disabled>Confirmar Cita</button>
+          </div>
+        </div>
+
+        <!-- PASO 4: CONFIRMACIÓN DE CITA -->
+        <div class="booking-panel" data-panel="4" style="display: none;">
+          <div class="text-center" style="padding: 1.5rem 0;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(16,185,129,0.15); color: var(--color-success, #10b981); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2>¡Reserva Guardada Exitosamente!</h2>
+            <p class="text-muted" style="margin-bottom: 1.5rem;">Tu cita se ha registrado en tu panel de control.</p>
+
+            <div style="background: var(--color-bg-soft, #f8fafc); padding: 1.25rem; border-radius: 8px; max-width: 420px; margin: 0 auto 2rem; text-align: left; border: 1px solid var(--color-border);">
+              <p style="margin-bottom: 0.5rem;"><strong>Servicio:</strong> <span id="summaryService">-</span></p>
+              <p style="margin-bottom: 0.5rem;"><strong>Fecha:</strong> <span id="summaryDate">-</span></p>
+              <p style="margin-bottom: 0;"><strong>Hora:</strong> <span id="summaryTime">-</span></p>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+              <a href="dashboard.html" class="btn btn-primary">Ver en Dashboard</a>
+              <button id="newBooking" class="btn btn-outline">Agendar otra reserva</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </footer>
+  </main>
 
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/animations.js"></script>
+
+<!-- Script mejorado de autocompletado en reservas.html -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefill = localStorage.getItem('selected_service_prefill');
+      if (prefill) {
+        try {
+          const data = JSON.parse(prefill);
+          const firstNextBtn = document.querySelector('[data-panel="1"] [data-next]');
+          const cards = document.querySelectorAll('.select-card');
+          
+          if (cards.length > 0) {
+            // Buscar la tarjeta del módulo correspondiente o usar la de Iglesia si es de iglesia
+            let targetCard = Array.from(cards).find(c => 
+              c.dataset.value.toLowerCase().includes(data.category)
+            ) || cards[3]; // cards[3] es la de Iglesia
+
+            cards.forEach(c => c.classList.remove('selected'));
+            targetCard.classList.add('selected');
+
+            // Actualizar texto y valor
+            const titleEl = targetCard.querySelector('h4');
+            if (titleEl) titleEl.textContent = data.service;
+            targetCard.dataset.value = data.service;
+
+            if (firstNextBtn) firstNextBtn.disabled = false;
+          }
+          localStorage.removeItem('selected_service_prefill');
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    });
+  </script>
 </body>
 </html>

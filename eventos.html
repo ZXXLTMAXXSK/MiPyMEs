@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Salón de Eventos — ReservaPro</title>
+  <title>Salón de Eventos — Nicolás Romero, Edomex</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animation.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -14,106 +14,123 @@
       --color-primary-light: #3b82f6;
       --color-accent: #c9a227;
     }
+
+    .solution-card.interactive {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .solution-card.interactive:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.25);
+    }
   </style>
 </head>
 <body>
-  <header class="navbar scrolled">
+  <header class="navbar scrolled" id="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="logo">
         <span class="logo-mark" style="background: linear-gradient(135deg,#1e3a8a,#c9a227);">E</span>
-        <span>Salón Élite</span>
+        <span>Salón Élite Nicolás Romero</span>
       </a>
       <nav class="nav-links">
         <a href="index.html">Inicio</a>
         <a href="#paquetes">Paquetes</a>
-        <a href="#galeria">Galería</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <div class="nav-actions">
+      <div id="navAuthContainer" class="nav-actions">
         <a href="reservas.html" class="btn btn-primary btn-sm">Cotizar evento</a>
       </div>
     </div>
   </header>
 
   <main style="padding-top: 5rem;">
+    <!-- Hero -->
     <section class="section" style="background: linear-gradient(135deg, #1e3a8a, #2563eb); color:#fff; padding-block: clamp(3rem, 6vw, 5rem);">
       <div class="container text-center">
-        <h1 style="color:#fff;" class="reveal">Eventos que dejan<br /><span style="color:#c9a227;">huella.</span></h1>
-        <p style="color: rgba(255,255,255,.8); max-width: 540px; margin: 1rem auto 2rem; font-size: 1.0625rem;" class="reveal reveal-delay-1">
-          Bodas, cumpleaños, corporativos y celebraciones. Espacios elegantes, servicio premium y atención personalizada.
+        <h1 style="color:#fff;" class="reveal">Eventos e historias<br /><span style="color:#c9a227;">inolvidables.</span></h1>
+        <p style="color: rgba(255,255,255,.85); max-width: 580px; margin: 1rem auto 2rem; font-size: 1.0625rem;" class="reveal reveal-delay-1">
+          Bodas, XV Años, bautizos y graduaciones en Nicolás Romero, Edomex. Elige tu paquete ideal con instalaciones cómodas y banquetes de alta calidad.
         </p>
-        <a href="reservas.html" class="btn btn-lg reveal reveal-delay-2" style="background:#c9a227; color:#1e3a8a;">Solicitar cotización</a>
+        <a href="#paquetes" class="btn btn-lg reveal reveal-delay-2" style="background:#c9a227; color:#1e3a8a; font-weight: 600;">Ver Paquetes y Precios</a>
       </div>
     </section>
 
+    <!-- Paquetes con precios reales del Estado de México -->
     <section class="section" id="paquetes">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Paquetes disponibles</h2>
-          <p>Elige el que mejor se adapte a tu celebración.</p>
+          <h2>Paquetes y Cotizaciones</h2>
+          <p>Precios reales adaptados al municipio de Nicolás Romero. Haz clic en un paquete para solicitar agenda.</p>
         </div>
 
         <div class="solutions-grid" style="grid-template-columns: 1fr; max-width: 1000px; margin-inline: auto;">
-          <article class="solution-card reveal" style="--card-accent:#2563eb;">
+          
+          <!-- Paquete Sencillo / Bautizos -->
+          <article class="solution-card interactive reveal" data-package="Paquete Esencial (Bautizo / Infantil)" data-price="$18,500 MXN" style="--card-accent:#2563eb;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap;">
               <div>
-                <h3>Paquete Esencial</h3>
-                <p>Hasta 80 invitados · 4 horas de evento</p>
+                <h3>Paquete Esencial (Infantil / Bautizo)</h3>
+                <p>Hasta 80 invitados · 5 horas de servicio</p>
               </div>
-              <div style="font-size:1.75rem; font-weight:800; color:#2563eb;">$850.000</div>
+              <div style="font-size:1.75rem; font-weight:800; color:#2563eb;">$18,500 MXN</div>
             </div>
             <ul style="margin-top:1rem; display:flex; flex-direction:column; gap:.5rem; font-size:.9375rem; color:var(--color-text-soft);">
-              <li>✓ Salón principal decorado</li>
-              <li>✓ Sonido e iluminación básica</li>
-              <li>✓ Mesa de postres</li>
-              <li>✓ Servicio de meseros</li>
+              <li>✓ Renta del salón por 5 hrs + 30 min de desalojo</li>
+              <li>✓ Mobiliario con mantelería y loza básica</li>
+              <li>✓ Menú a 2 tiempos (comida tradicional)</li>
+              <li>✓ Equipo de sonido ambiental y luz básica</li>
+              <li>✓ Servicio de 2 meseros y personal de baños</li>
             </ul>
           </article>
 
-          <article class="solution-card reveal reveal-delay-1" style="--card-accent:#c9a227; border-color:#c9a227;">
+          <!-- Paquete XV Años / Bodas Tradicional -->
+          <article class="solution-card interactive reveal reveal-delay-1" data-package="Paquete Premium (XV Años / Bodas)" data-price="$38,000 MXN" style="--card-accent:#c9a227; border-color:#c9a227;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap;">
               <div>
-                <h3>Paquete Premium <span class="badge badge-warning" style="margin-left:.5rem;">Popular</span></h3>
-                <p>Hasta 150 invitados · 6 horas de evento</p>
+                <h3>Paquete Premium (XV Años / Bodas) <span class="badge badge-warning" style="margin-left:.5rem;">Más solicitado</span></h3>
+                <p>Hasta 150 invitados · 6 horas de fiesta</p>
               </div>
-              <div style="font-size:1.75rem; font-weight:800; color:#c9a227;">$1.500.000</div>
+              <div style="font-size:1.75rem; font-weight:800; color:#c9a227;">$38,000 MXN</div>
             </div>
             <ul style="margin-top:1rem; display:flex; flex-direction:column; gap:.5rem; font-size:.9375rem; color:var(--color-text-soft);">
-              <li>✓ Todo lo del Esencial</li>
-              <li>✓ Decoración temática personalizada</li>
-              <li>✓ DJ profesional</li>
-              <li>✓ Barra de bebidas</li>
-              <li>✓ Coordinador de evento</li>
+              <li>✓ Renta de salón completo por 6 horas</li>
+              <li>✓ Banquete a 3 tiempos con refresco e hielo ilimitado</li>
+              <li>✓ DJ profesional con cabina iluminada y humo</li>
+              <li>✓ Centros de mesa con flor natural y centro de honor</li>
+              <li>✓ Capitan de meseros, meseros y seguridad en puerta</li>
             </ul>
           </article>
 
-          <article class="solution-card reveal reveal-delay-2" style="--card-accent:#1e3a8a;">
+          <!-- Paquete Completo Todo Incluido -->
+          <article class="solution-card interactive reveal reveal-delay-2" data-package="Paquete Deluxe (Todo Incluido)" data-price="$65,000 MXN" style="--card-accent:#1e3a8a;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap;">
               <div>
-                <h3>Paquete Deluxe</h3>
-                <p>Hasta 300 invitados · 8 horas de evento</p>
+                <h3>Paquete Deluxe (Todo Incluido)</h3>
+                <p>Hasta 250 invitados · 7 horas de evento</p>
               </div>
-              <div style="font-size:1.75rem; font-weight:800; color:#1e3a8a;">$2.800.000</div>
+              <div style="font-size:1.75rem; font-weight:800; color:#1e3a8a;">$65,000 MXN</div>
             </div>
             <ul style="margin-top:1rem; display:flex; flex-direction:column; gap:.5rem; font-size:.9375rem; color:var(--color-text-soft);">
-              <li>✓ Todo lo del Premium</li>
-              <li>✓ Salón completo + terraza</li>
-              <li>✓ Catering gourmet</li>
-              <li>✓ Fotografía y video</li>
-              <li>✓ Wedding planner</li>
+              <li>✓ Renta de salón y área de jardín por 7 horas</li>
+              <li>✓ Banquete Gourmet a 3 tiempos + Tornafiesta (Chilaquiles)</li>
+              <li>✓ DJ, iluminación robótica y grupo versátil / Mariachi (1 hr)</li>
+              <li>✓ Mesa de dulces/snacks decorada + Pastel conmemorativo</li>
+              <li>✓ Coordinador general de evento y estacionamiento privado</li>
             </ul>
           </article>
+
         </div>
       </div>
     </section>
 
+    <!-- Contacto -->
     <section class="section" id="contacto" style="background: var(--color-bg-soft);">
       <div class="container text-center reveal">
-        <h2>¿Listo para tu evento?</h2>
-        <p class="text-soft" style="max-width: 480px; margin: 1rem auto 2rem;">
-          Cuéntanos qué necesitas y te enviaremos una cotización personalizada.
+        <h2>Ubicación y Atención</h2>
+        <p class="text-soft" style="max-width: 520px; margin: 1rem auto 2rem;">
+          Nos encontramos en Av. 16 de Septiembre, Nicolás Romero, Edo. de México.<br />Atención a clientes: Mar a Dom de 10:00 AM a 6:00 PM.
         </p>
-        <a href="reservas.html" class="btn btn-primary btn-lg">Solicitar cotización</a>
+        <a href="reservas.html" class="btn btn-primary btn-lg">Solicitar fecha y cotización</a>
       </div>
     </section>
   </main>
@@ -121,7 +138,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-        <span>© 2025 Salón Élite · Powered by ReservaPro</span>
+        <span>© 2026 Salón Élite Nicolás Romero · Powered by ReservaPro</span>
         <a href="index.html">Volver al inicio</a>
       </div>
     </div>
@@ -132,5 +149,28 @@
   <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/animations.js"></script>
+
+  <!-- Script para conectar con el flujo de reservas -->
+  <script>
+    document.querySelectorAll('.solution-card.interactive').forEach(card => {
+      card.addEventListener('click', () => {
+        const packageName = card.dataset.package;
+        const price = card.dataset.price;
+        
+        localStorage.setItem('selected_service_prefill', JSON.stringify({
+          category: 'eventos',
+          service: `${packageName} - ${price}`
+        }));
+
+        if (window.ToastManager) {
+          window.ToastManager.show(`Seleccionado: ${packageName}. Redirigiendo a agenda...`, 'info');
+        }
+
+        setTimeout(() => {
+          window.location.href = 'reservas.html';
+        }, 800);
+      });
+    });
+  </script>
 </body>
 </html>

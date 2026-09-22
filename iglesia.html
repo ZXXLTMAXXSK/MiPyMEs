@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iglesia & Comunidad — ReservaPro</title>
+  <title>Comunidad Vida — Nicolás Romero, Edomex</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animation.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -14,124 +14,139 @@
       --color-primary-light: #14b8a6;
       --color-accent: #3b82f6;
     }
+
+    .solution-card.interactive {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .solution-card.interactive:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.25);
+    }
   </style>
 </head>
 <body>
-  <header class="navbar scrolled">
+  <header class="navbar scrolled" id="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="logo">
         <span class="logo-mark" style="background: linear-gradient(135deg,#3b82f6,#0d9488);">I</span>
-        <span>Comunidad Vida</span>
+        <span>Comunidad Vida Nicolás Romero</span>
       </a>
       <nav class="nav-links">
         <a href="index.html">Inicio</a>
-        <a href="#eventos">Eventos</a>
+        <a href="#eventos">Reuniones</a>
         <a href="#horarios">Horarios</a>
-        <a href="#comunidad">Comunidad</a>
+        <a href="#comunidad">Ubicación</a>
       </nav>
-      <div class="nav-actions">
+      <div id="navAuthContainer" class="nav-actions">
         <a href="reservas.html" class="btn btn-primary btn-sm">Inscribirse</a>
       </div>
     </div>
   </header>
 
   <main style="padding-top: 5rem;">
+    <!-- Hero -->
     <section class="section" style="background: linear-gradient(135deg, #3b82f6, #0d9488); color:#fff; padding-block: clamp(3rem, 6vw, 5rem);">
       <div class="container text-center">
-        <h1 style="color:#fff;" class="reveal">Un lugar para<br /><span style="color:#a7f3d0;">encontrar comunidad.</span></h1>
-        <p style="color: rgba(255,255,255,.85); max-width: 540px; margin: 1rem auto 2rem; font-size: 1.0625rem;" class="reveal reveal-delay-1">
-          Cultos, actividades, grupos pequeños y eventos especiales. Reserva tu lugar y sé parte de nuestra comunidad.
+        <h1 style="color:#fff;" class="reveal">Un lugar de fe y<br /><span style="color:#a7f3d0;">comunidad en Nicolás Romero.</span></h1>
+        <p style="color: rgba(255,255,255,.85); max-width: 580px; margin: 1rem auto 2rem; font-size: 1.0625rem;" class="reveal reveal-delay-1">
+          Cultos dominicales, reuniones de jóvenes y grupos pequeños. Reserva tu asiento o confirma la asistencia de tu familia para acompañarnos.
         </p>
-        <a href="reservas.html" class="btn btn-lg reveal reveal-delay-2" style="background:#fff; color:#0d9488;">Reservar mi lugar</a>
+        <a href="reservas.html" class="btn btn-lg reveal reveal-delay-2" style="background:#fff; color:#0d9488; font-weight: 600;">Reservar mi lugar</a>
       </div>
     </section>
 
+    <!-- Próximos Eventos y Servicios -->
     <section class="section" id="eventos">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Próximos eventos</h2>
-          <p>Reserva tu asistencia y acompáñanos.</p>
+          <h2>Próximas Reuniones Especiales</h2>
+          <p>Selecciona una reunión para registrar el aforo de tu familia.</p>
         </div>
 
         <div class="solutions-grid" style="grid-template-columns: 1fr; max-width: 900px; margin-inline: auto;">
-          <article class="solution-card reveal" style="--card-accent:#0d9488; --card-bg: rgba(13,148,136,.1);">
+          <article class="solution-card interactive reveal" data-event="Iglesia - Servicio Familiar Dominical" style="--card-accent:#0d9488; --card-bg: rgba(13,148,136,.1);">
             <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
               <div style="text-align:center; min-width:60px;">
-                <div style="font-size:1.5rem; font-weight:800; color:#0d9488;">15</div>
-                <div style="font-size:.75rem; text-transform:uppercase; color:var(--color-text-muted);">DIC</div>
+                <div style="font-size:1.5rem; font-weight:800; color:#0d9488;">DOM</div>
+                <div style="font-size:.75rem; text-transform:uppercase; color:var(--color-text-muted);">10:00 AM</div>
               </div>
               <div style="flex:1; min-width:200px;">
-                <h3>Culto de Navidad</h3>
-                <p>Celebración especial con coro y mensaje navideño.</p>
+                <h3>Servicio Familiar Dominical</h3>
+                <p>Alabanza, mensaje de enseñanza y escuela dominical para niños.</p>
               </div>
-              <span class="badge badge-success">Aforo disponible</span>
+              <span class="badge badge-success">Aforo libre</span>
             </div>
           </article>
 
-          <article class="solution-card reveal reveal-delay-1" style="--card-accent:#3b82f6; --card-bg: rgba(59,130,246,.1);">
+          <article class="solution-card interactive reveal reveal-delay-1" data-event="Iglesia - Congreso de Jóvenes NR" style="--card-accent:#3b82f6; --card-bg: rgba(59,130,246,.1);">
             <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
               <div style="text-align:center; min-width:60px;">
-                <div style="font-size:1.5rem; font-weight:800; color:#3b82f6;">22</div>
-                <div style="font-size:.75rem; text-transform:uppercase; color:var(--color-text-muted);">DIC</div>
+                <div style="font-size:1.5rem; font-weight:800; color:#3b82f6;">SÁB</div>
+                <div style="font-size:.75rem; text-transform:uppercase; color:var(--color-text-muted);">5:00 PM</div>
               </div>
               <div style="flex:1; min-width:200px;">
-                <h3>Encuentro de jóvenes</h3>
-                <p>Actividad especial para jóvenes de la comunidad.</p>
+                <h3>Encuentro de Jóvenes Nicolás Romero</h3>
+                <p>Música en vivo, dinámicas de integración y conferencia juvenil.</p>
               </div>
-              <span class="badge badge-warning">Pocos cupos</span>
+              <span class="badge badge-warning">Pocos lugares</span>
             </div>
           </article>
 
-          <article class="solution-card reveal reveal-delay-2" style="--card-accent:#0d9488; --card-bg: rgba(13,148,136,.1);">
+          <article class="solution-card interactive reveal reveal-delay-2" data-event="Iglesia - Noche de Oración y Gratitud" style="--card-accent:#0d9488; --card-bg: rgba(13,148,136,.1);">
             <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
               <div style="text-align:center; min-width:60px;">
-                <div style="font-size:1.5rem; font-weight:800; color:#0d9488;">31</div>
-                <div style="font-size:.75rem; text-transform:uppercase; color:var(--color-text-muted);">DIC</div>
+                <div style="font-size:1.5rem; font-weight:800; color:#0d9488;">VIE</div>
+                <div style="font-size:.75rem; text-transform:uppercase; color:var(--color-text-muted);">7:00 PM</div>
               </div>
               <div style="flex:1; min-width:200px;">
-                <h3>Vigilia de fin de año</h3>
-                <p>Cerramos el año juntos con gratitud.</p>
+                <h3>Noche de Oración y Gratitud</h3>
+                <p>Reunión comunitaria de intercesión y bendición para las familias locales.</p>
               </div>
-              <span class="badge badge-success">Aforo disponible</span>
+              <span class="badge badge-success">Aforo libre</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- Horarios Semanales -->
     <section class="section" id="horarios" style="background: var(--color-bg-soft);">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Horarios de servicios</h2>
+          <h2>Horarios de Cultos Semanales</h2>
+          <p>Haz clic en cualquiera para agendar tu asistencia habitual.</p>
         </div>
 
         <div class="solutions-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));">
-          <div class="solution-card reveal text-center" style="--card-accent:#0d9488;">
-            <h4>Domingo</h4>
-            <p style="font-size:1.25rem; font-weight:700; color:#0d9488; margin-top:.5rem;">9:00 · 11:00</p>
-            <p class="text-muted" style="font-size:.8125rem;">Cultos principales</p>
+          <div class="solution-card interactive reveal text-center" data-event="Iglesia - Culto Dominical (10:00 AM)" style="--card-accent:#0d9488;">
+            <h4>Domingos</h4>
+            <p style="font-size:1.25rem; font-weight:700; color:#0d9488; margin-top:.5rem;">10:00 AM · 12:00 PM</p>
+            <p class="text-muted" style="font-size:.8125rem;">Cultos Generales</p>
           </div>
-          <div class="solution-card reveal reveal-delay-1 text-center" style="--card-accent:#3b82f6;">
+          <div class="solution-card interactive reveal reveal-delay-1 text-center" data-event="Iglesia - Estudio Bíblico Miércoles" style="--card-accent:#3b82f6;">
             <h4>Miércoles</h4>
-            <p style="font-size:1.25rem; font-weight:700; color:#3b82f6; margin-top:.5rem;">19:00</p>
-            <p class="text-muted" style="font-size:.8125rem;">Estudio bíblico</p>
+            <p style="font-size:1.25rem; font-weight:700; color:#3b82f6; margin-top:.5rem;">6:30 PM</p>
+            <p class="text-muted" style="font-size:.8125rem;">Estudio Bíblico y Oración</p>
           </div>
-          <div class="solution-card reveal reveal-delay-2 text-center" style="--card-accent:#0d9488;">
+          <div class="solution-card interactive reveal reveal-delay-2 text-center" data-event="Iglesia - Grupo de Hogar Viernes" style="--card-accent:#0d9488;">
             <h4>Viernes</h4>
-            <p style="font-size:1.25rem; font-weight:700; color:#0d9488; margin-top:.5rem;">18:30</p>
-            <p class="text-muted" style="font-size:.8125rem;">Grupos pequeños</p>
+            <p style="font-size:1.25rem; font-weight:700; color:#0d9488; margin-top:.5rem;">7:00 PM</p>
+            <p class="text-muted" style="font-size:.8125rem;">Grupos Pequeños en Hogares</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Ubicación -->
     <section class="section" id="comunidad">
       <div class="container text-center reveal">
-        <h2>Sé parte de la comunidad</h2>
-        <p class="text-soft" style="max-width: 480px; margin: 1rem auto 2rem;">
-          Reserva tu lugar en nuestros próximos encuentros. Todos son bienvenidos.
+        <h2>Ubicación y Contacto</h2>
+        <p class="text-soft" style="max-width: 520px; margin: 1rem auto 2rem;">
+          Av. Juárez #12, Col. El Progreso, Nicolás Romero, Estado de México.<br />
+          Entrada libre y ambiente 100% familiar.
         </p>
-        <a href="reservas.html" class="btn btn-primary btn-lg">Inscribirme</a>
+        <a href="reservas.html" class="btn btn-primary btn-lg">Confirmar mi Asistencia</a>
       </div>
     </section>
   </main>
@@ -139,7 +154,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-        <span>© 2025 Comunidad Vida · Powered by ReservaPro</span>
+        <span>© 2026 Comunidad Vida · Nicolás Romero, Edomex</span>
         <a href="index.html">Volver al inicio</a>
       </div>
     </div>
@@ -150,5 +165,26 @@
   <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/animations.js"></script>
+
+  <script>
+    document.querySelectorAll('.solution-card.interactive').forEach(card => {
+      card.addEventListener('click', () => {
+        const eventName = card.dataset.event || card.querySelector('h3, h4')?.textContent.trim();
+        
+        localStorage.setItem('selected_service_prefill', JSON.stringify({
+          category: 'iglesia',
+          service: eventName
+        }));
+
+        if (window.ToastManager) {
+          window.ToastManager.show(`Reunión seleccionada: "${eventName}". Redirigiendo a reserva...`, 'info');
+        }
+
+        setTimeout(() => {
+          window.location.href = 'reservas.html';
+        }, 700);
+      });
+    });
+  </script>
 </body>
 </html>

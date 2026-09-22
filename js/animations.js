@@ -54,7 +54,7 @@
   });
 
   /* ============================================
-     FLUJO DE RESERVAS
+     FLUJO DE RESERVAS CON PERSISTENCIA
      ============================================ */
 
   function initBookingFlow() {
@@ -62,16 +62,22 @@
     const steps = document.querySelectorAll('.booking-step');
     const connectors = document.querySelectorAll('.booking-step-connector');
 
+    // Determinar el negocio según el archivo HTML actual
+    const pageName = window.location.pathname.split('/').pop().replace('.html', '') || 'general';
+
     const state = {
+      category: pageName,
       service: null,
       date: null,
       time: null
     };
 
     function goToStep(stepNumber) {
-      // Paneles
+      // Paneles: cambiar clase active Y forzar propiedad display
       panels.forEach(p => {
-        p.classList.toggle('active', parseInt(p.dataset.panel) === stepNumber);
+        const isCurrent = parseInt(p.dataset.panel) === stepNumber;
+        p.classList.toggle('active', isCurrent);
+        p.style.display = isCurrent ? 'block' : 'none';
       });
 
       // Steps
@@ -89,7 +95,7 @@
           : 'var(--color-border)';
       });
 
-      // Scroll al inicio del contenido
+      // Scroll suave hacia arriba en el contenedor
       const content = document.querySelector('.booking-content');
       if (content) {
         const top = content.getBoundingClientRect().top + window.scrollY - 100;
@@ -100,7 +106,14 @@
     // Botones "Continuar"
     document.querySelectorAll('[data-next]').forEach(btn => {
       btn.addEventListener('click', () => {
+        const currentPanel = parseInt(btn.closest('.booking-panel')?.dataset.panel);
         const next = parseInt(btn.dataset.next);
+
+        // Si estamos pasando al último paso (Confirmación/Final)
+        if (next === 4 || currentPanel === 3) {
+          saveCurrentBooking(state);
+        }
+
         goToStep(next);
       });
     });
@@ -113,7 +126,7 @@
       });
     });
 
-    // Selección de servicio
+    // Selección por Pasos
     panels.forEach(panel => {
       const stepNum = parseInt(panel.dataset.panel);
 
@@ -125,21 +138,26 @@
           card.addEventListener('click', () => {
             cards.forEach(c => c.classList.remove('selected'));
             card.classList.add('selected');
-            state.service = card.dataset.value;
+            state.service = card.dataset.value || card.querySelector('h3, h4')?.textContent.trim();
             if (nextBtn) nextBtn.disabled = false;
           });
         });
       }
 
       if (stepNum === 2) {
-        const cards = panel.querySelectorAll('.select-card');
+        const cards = panel.querySelectorAll('.select-card, input[type="date"]');
         const nextBtn = panel.querySelector('[data-next]');
 
         cards.forEach(card => {
-          card.addEventListener('click', () => {
-            cards.forEach(c => c.classList.remove('selected'));
-            card.classList.add('selected');
-            state.date = card.dataset.value;
+          const eventType = card.tagName === 'INPUT' ? 'change' : 'click';
+          card.addEventListener(eventType, () => {
+            if (card.tagName !== 'INPUT') {
+              cards.forEach(c => c.classList.remove('selected'));
+              card.classList.add('selected');
+              state.date = card.dataset.value;
+            } else {
+              state.date = card.value;
+            }
             if (nextBtn) nextBtn.disabled = false;
           });
         });
@@ -160,18 +178,38 @@
       }
     });
 
-    // Botón "Nueva reserva" en confirmación
+    // Guardar en StorageManager y actualizar resumen
+    function saveCurrentBooking(bookingData) {
+      if (window.StorageManager) {
+        window.StorageManager.addReservation(bookingData);
+      }
+
+      // Actualizar resumen en la pantalla final si existen los contenedores
+      const summaryService = document.getElementById('summaryService');
+      const summaryDate = document.getElementById('summaryDate');
+      const summaryTime = document.getElementById('summaryTime');
+
+      if (summaryService) summaryService.textContent = bookingData.service || 'Servicio';
+      if (summaryDate) summaryDate.textContent = bookingData.date || 'Fecha seleccionada';
+      if (summaryTime) summaryTime.textContent = bookingData.time || 'Hora seleccionada';
+
+      if (window.ToastManager) {
+        window.ToastManager.show('Reserva registrada en tu panel.', 'success');
+      }
+    }
+
+    // Botón "Nueva reserva"
     const newBtn = document.getElementById('newBooking');
     newBtn?.addEventListener('click', () => {
-      // Reset
       document.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
       document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
       document.querySelectorAll('[data-next]').forEach(b => b.disabled = true);
       state.service = state.date = state.time = null;
 
-      // Ir al paso 1
       goToStep(1);
-      ToastManager.show('Listo para una nueva reserva.', 'info');
+      if (window.ToastManager) {
+        window.ToastManager.show('Listo para una nueva reserva.', 'info');
+      }
     });
   }
 
@@ -183,6 +221,7 @@
     const nodes = document.querySelectorAll('.table-node.available, .table-node.selected');
     const label = document.getElementById('mesaSeleccionada');
     const reservarBtn = document.getElementById('reservarMesa');
+    let selectedTableNum = null;
 
     nodes.forEach(node => {
       node.addEventListener('click', () => {
@@ -198,14 +237,39 @@
         node.classList.remove('available');
         node.classList.add('selected');
 
-        const num = node.dataset.table;
-        const zone = parseInt(num) > 8 ? 'Terraza' : 'Principal';
-        if (label) label.textContent = `M${num} · ${zone}`;
+        selectedTableNum = node.dataset.table;
+        const zone = parseInt(selectedTableNum) > 8 ? 'Terraza' : 'Principal';
+        if (label) label.textContent = `M${selectedTableNum} · ${zone}`;
       });
     });
 
     reservarBtn?.addEventListener('click', () => {
-      ToastManager.show('Mesa reservada correctamente (demo visual).', 'success');
+      if (!selectedTableNum) {
+        if (window.ToastManager) window.ToastManager.show('Por favor selecciona una mesa disponible.', 'error');
+        return;
+      }
+
+      const activeNode = document.querySelector(`.table-node[data-table="${selectedTableNum}"]`);
+      if (activeNode) {
+        activeNode.classList.remove('selected', 'available');
+        activeNode.classList.add('occupied');
+      }
+
+      if (window.StorageManager) {
+        window.StorageManager.addReservation({
+          category: 'restaurante',
+          service: `Mesa #${selectedTableNum}`,
+          date: new Date().toLocaleDateString(),
+          time: 'Turno Actual'
+        });
+      }
+
+      if (window.ToastManager) {
+        window.ToastManager.show(`Mesa ${selectedTableNum} reservada con éxito.`, 'success');
+      }
+
+      if (label) label.textContent = 'Ninguna mesa seleccionada';
+      selectedTableNum = null;
     });
   }
 

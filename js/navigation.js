@@ -1,12 +1,91 @@
 /* ============================================
    NAVIGATION.JS
-   Navbar, menú móvil y scroll
+   Navbar, menú móvil, scroll y control de rutas
    ============================================ */
 
 (function () {
   'use strict';
 
+  /* ============================================
+     CONTROL DE ACCESO Y UI SEGÚN SESIÓN
+     ============================================ */
+
+  function setupAuthNavigation() {
+    if (!window.StorageManager) return;
+
+    const currentUser = window.StorageManager.getCurrentUser();
+    const currentPath = window.location.pathname.toLowerCase();
+
+    // Rutas protegidas (requieren haber iniciado sesión)
+    const protectedPages = ['dashboard.html', 'reservas.html'];
+    // Rutas solo para visitantes (no autenticados)
+    const guestOnlyPages = ['login.html', 'registro.html'];
+
+    const isProtected = protectedPages.some(page => currentPath.endsWith(page));
+    const isGuestOnly = guestOnlyPages.some(page => currentPath.endsWith(page));
+
+    // Guard de Navegación
+    if (isProtected && !currentUser) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    if (isGuestOnly && currentUser) {
+      window.location.href = 'dashboard.html';
+      return;
+    }
+
+    // Actualización dinámica de elementos visuales del Nav
+    updateNavUI(currentUser);
+  }
+
+  function updateNavUI(currentUser) {
+    const navAuthContainer = document.getElementById('navAuthContainer');
+    const mobileAuthContainer = document.getElementById('mobileAuthContainer');
+
+    if (!navAuthContainer && !mobileAuthContainer) return;
+
+    let authHTML = '';
+
+    if (currentUser) {
+      const displayName = currentUser.name || currentUser.email.split('@')[0];
+      authHTML = `
+        <span class="user-greeting">Hola, <strong>${displayName}</strong></span>
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button id="logoutBtn" class="btn btn-primary btn-sm">Cerrar Sesión</button>
+      `;
+    } else {
+      authHTML = `
+        <a href="login.html" class="btn btn-outline btn-sm">Iniciar Sesión</a>
+        <a href="registro.html" class="btn btn-primary btn-sm">Registrarse</a>
+      `;
+    }
+
+    if (navAuthContainer) navAuthContainer.innerHTML = authHTML;
+    if (mobileAuthContainer) mobileAuthContainer.innerHTML = authHTML;
+
+    // Listener para el botón de logout dinámico
+    document.querySelectorAll('#logoutBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.StorageManager.logout();
+        if (window.ToastManager) {
+          window.ToastManager.show('Sesión cerrada correctamente.', 'info');
+        }
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+      });
+    });
+  }
+
+  /* ============================================
+     EVENTOS DE NAVEGACIÓN Y MENÚ
+     ============================================ */
+
   document.addEventListener('DOMContentLoaded', () => {
+    // Ejecutar verificación de sesión y renderizado de Nav
+    setupAuthNavigation();
+
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -88,4 +167,4 @@
       });
     });
   });
-})();S
+})();

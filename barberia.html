@@ -3,94 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barbería — ReservaPro</title>
+  <title>Barbería Studio — Nicolás Romero, Edomex</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animation.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <style>
-    /* Variación de color para el módulo barbería */
     :root {
       --color-primary: #c9a227;
       --color-primary-dark: #a8871a;
       --color-primary-light: #dbb63d;
       --color-accent: #0f172a;
     }
+
+    .solution-card.interactive {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .solution-card.interactive:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(201, 162, 39, 0.25);
+    }
   </style>
 </head>
 <body>
-  <header class="navbar scrolled">
+  <header class="navbar scrolled" id="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="logo">
         <span class="logo-mark" style="background: linear-gradient(135deg,#0f172a,#c9a227);">B</span>
-        <span>Barbería Premium</span>
+        <span>Barbería Studio NR</span>
       </a>
+
       <nav class="nav-links">
         <a href="index.html">Inicio</a>
         <a href="#servicios">Servicios</a>
-        <a href="#equipo">Equipo</a>
-        <a href="#horarios">Horarios</a>
+        <a href="#equipo">Barberos</a>
+        <a href="#horarios">Ubicación</a>
       </nav>
-      <div class="nav-actions">
+
+      <div id="navAuthContainer" class="nav-actions">
         <a href="reservas.html" class="btn btn-primary btn-sm">Reservar cita</a>
       </div>
     </div>
   </header>
 
   <main style="padding-top: 5rem;">
-    <!-- Hero barbería -->
+    <!-- Hero -->
     <section class="section" style="background: linear-gradient(135deg, #0f172a, #1e293b); color:#fff; padding-block: clamp(3rem, 6vw, 5rem);">
       <div class="container text-center">
-        <h1 style="color:#fff;" class="reveal">Estilo clásico,<br /><span style="color:#c9a227;">resultados modernos.</span></h1>
+        <h1 style="color:#fff;" class="reveal">Cortes modernos,<br /><span style="color:#c9a227;">estilo impecable.</span></h1>
         <p style="color: rgba(255,255,255,.75); max-width: 540px; margin: 1rem auto 2rem; font-size: 1.0625rem;" class="reveal reveal-delay-1">
-          Reserva tu cita en segundos. Elige tu barbero favorito, el servicio que necesitas y el horario que mejor te convenga.
+          La mejor atención en el Centro de Nicolás Romero. Elige a tu barbero, selecciona tu corte o perfilado y agenda en segundos.
         </p>
-        <a href="reservas.html" class="btn btn-primary btn-lg reveal reveal-delay-2">Reservar ahora</a>
+        <a href="reservas.html" class="btn btn-primary btn-lg reveal reveal-delay-2">Agendar cita</a>
       </div>
     </section>
 
-    <!-- Servicios -->
+    <!-- Servicios con precios reales en MXN -->
     <section class="section" id="servicios">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Nuestros servicios</h2>
-          <p>Tarifas claras, resultados profesionales.</p>
+          <h2>Nuestros Servicios</h2>
+          <p>Precios accesibles y calidad profesional en Nicolás Romero.</p>
         </div>
 
         <div class="solutions-grid">
-          <article class="solution-card reveal" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
+          <article class="solution-card interactive reveal" data-service="Corte Clásico / Fade" data-price="$120 MXN" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
             <div class="solution-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
             </div>
-            <h3>Corte clásico</h3>
-            <p>30 minutos · Acabado profesional con navaja y tijera.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$15.000</div>
+            <h3>Corte Clásico / Fade</h3>
+            <p>30 min · Desvanecido, tijera o máquina + peinado con cera.</p>
+            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$120 MXN</div>
           </article>
 
-          <article class="solution-card reveal reveal-delay-1" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
+          <article class="solution-card interactive reveal reveal-delay-1" data-service="Corte + Perfilado de Barba" data-price="$180 MXN" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
             <div class="solution-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
             </div>
             <h3>Corte + Barba</h3>
-            <p>45 minutos · Corte personalizado + perfilado de barba.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$22.000</div>
+            <p>45 min · Corte a elegir + perfilado con navaja y toalla caliente.</p>
+            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$180 MXN</div>
           </article>
 
-          <article class="solution-card reveal reveal-delay-2" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
+          <article class="solution-card interactive reveal reveal-delay-2" data-service="Tinte / Platinado / Mechas" data-price="$350 MXN" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
             <div class="solution-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
-            <h3>Color completo</h3>
-            <p>90 minutos · Tinte profesional y tratamiento capilar.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$45.000</div>
+            <h3>Color / Platinado</h3>
+            <p>90 min · Decoloración profesional, tinte o matiz capilar.</p>
+            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$350 MXN</div>
           </article>
 
-          <article class="solution-card reveal reveal-delay-3" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
+          <article class="solution-card interactive reveal reveal-delay-3" data-service="Limpieza Facial + Exfoliación" data-price="$200 MXN" style="--card-accent:#c9a227; --card-bg: rgba(201,162,39,.1);">
             <div class="solution-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8h10c0-3 2-5 2-8a7 7 0 0 0-7-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
             </div>
-            <h3>Tratamiento facial</h3>
-            <p>60 minutos · Limpieza profunda e hidratación.</p>
-            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$35.000</div>
+            <h3>Exfoliación y Facial</h3>
+            <p>40 min · Mascarilla negra, vapor de ozono e hidratación.</p>
+            <div class="price" style="font-weight:700; color:#c9a227; font-size:1.125rem; margin-top:.5rem;">$200 MXN</div>
           </article>
         </div>
       </div>
@@ -100,40 +110,41 @@
     <section class="section" id="equipo" style="background: var(--color-bg-soft);">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Nuestro equipo</h2>
-          <p>Profesionales con años de experiencia.</p>
+          <h2>Equipo de Barberos</h2>
+          <p>Especialistas en cortes urbanos y barbería tradicional.</p>
         </div>
 
         <div class="solutions-grid">
           <article class="solution-card reveal text-center" style="--card-accent:#c9a227;">
-            <div class="avatar avatar-lg" style="margin: 0 auto 1rem; width:72px; height:72px; font-size:1.5rem;">JP</div>
-            <h3>Juan Pérez</h3>
-            <p>Barbero principal · 12 años de experiencia</p>
+            <div class="avatar avatar-lg" style="margin: 0 auto 1rem; width:72px; height:72px; font-size:1.5rem;">LR</div>
+            <h3>Luis Ramírez</h3>
+            <p>Master Barbero · Especialista en Fades</p>
           </article>
 
           <article class="solution-card reveal reveal-delay-1 text-center" style="--card-accent:#c9a227;">
             <div class="avatar avatar-lg" style="margin: 0 auto 1rem; width:72px; height:72px; font-size:1.5rem; background: linear-gradient(135deg,#0f172a,#c9a227);">MG</div>
             <h3>María González</h3>
-            <p>Especialista en color · 8 años</p>
+            <p>Colorista & Estilista Capilar</p>
           </article>
 
           <article class="solution-card reveal reveal-delay-2 text-center" style="--card-accent:#c9a227;">
             <div class="avatar avatar-lg" style="margin: 0 auto 1rem; width:72px; height:72px; font-size:1.5rem; background: linear-gradient(135deg,#c9a227,#0f172a);">CR</div>
             <h3>Carlos Ruiz</h3>
-            <p>Barbero & estilista · 6 años</p>
+            <p>Perfilado de Barba & Tratamientos</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA & Ubicación -->
     <section class="section" id="horarios">
       <div class="container text-center reveal">
-        <h2>Reserva tu cita hoy</h2>
-        <p class="text-soft" style="max-width: 480px; margin: 1rem auto 2rem;">
-          Lun a Sáb: 9:00 - 20:00 · Dom: Cerrado
+        <h2>Horarios y Ubicación</h2>
+        <p class="text-soft" style="max-width: 520px; margin: 1rem auto 2rem;">
+          Av. 16 de Septiembre #45, Col. Centro, Nicolás Romero, Edo. Méx.<br />
+          Lun a Sáb: 10:00 AM - 8:00 PM · Dom: 10:00 AM - 4:00 PM
         </p>
-        <a href="reservas.html" class="btn btn-primary btn-lg">Reservar cita</a>
+        <a href="reservas.html" class="btn btn-primary btn-lg">Reservar mi lugar</a>
       </div>
     </section>
   </main>
@@ -141,7 +152,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-        <span>© 2025 Barbería Premium · Powered by ReservaPro</span>
+        <span>© 2026 Barbería Studio NR · Nicolás Romero, Edomex</span>
         <a href="index.html">Volver al inicio</a>
       </div>
     </div>
@@ -152,5 +163,27 @@
   <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/animations.js"></script>
+
+  <script>
+    document.querySelectorAll('.solution-card.interactive').forEach(card => {
+      card.addEventListener('click', () => {
+        const service = card.dataset.service;
+        const price = card.dataset.price;
+        
+        localStorage.setItem('selected_service_prefill', JSON.stringify({
+          category: 'barberia',
+          service: `${service} (${price})`
+        }));
+
+        if (window.ToastManager) {
+          window.ToastManager.show(`Seleccionado: ${service}. Redirigiendo...`, 'info');
+        }
+
+        setTimeout(() => {
+          window.location.href = 'reservas.html';
+        }, 800);
+      });
+    });
+  </script>
 </body>
 </html>

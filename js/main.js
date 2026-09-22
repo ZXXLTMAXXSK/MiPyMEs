@@ -1,10 +1,77 @@
 /* ============================================
    MAIN.JS
-   Interacciones visuales generales
+   Interacciones visuales generales y Mock Storage
    ============================================ */
 
 (function () {
   'use strict';
+
+  /* ============================================
+     STORAGE MANAGER (Backend Falso / Mock API)
+     ============================================ */
+
+  const StorageManager = {
+    KEYS: {
+      USERS: 'mipymes_users',
+      CURRENT_USER: 'mipymes_current_user',
+      RESERVATIONS: 'mipymes_reservations'
+    },
+
+    init() {
+      if (!localStorage.getItem(this.KEYS.USERS)) {
+        localStorage.setItem(this.KEYS.USERS, JSON.stringify([]));
+      }
+      if (!localStorage.getItem(this.KEYS.RESERVATIONS)) {
+        localStorage.setItem(this.KEYS.RESERVATIONS, JSON.stringify([]));
+      }
+    },
+
+    getUsers() {
+      return JSON.parse(localStorage.getItem(this.KEYS.USERS)) || [];
+    },
+
+    saveUser(user) {
+      const users = this.getUsers();
+      users.push(user);
+      localStorage.setItem(this.KEYS.USERS, JSON.stringify(users));
+    },
+
+    getCurrentUser() {
+      return JSON.parse(localStorage.getItem(this.KEYS.CURRENT_USER)) || null;
+    },
+
+    setCurrentUser(user) {
+      localStorage.setItem(this.KEYS.CURRENT_USER, JSON.stringify(user));
+    },
+
+    logout() {
+      localStorage.removeItem(this.KEYS.CURRENT_USER);
+    },
+
+    getReservations() {
+      return JSON.parse(localStorage.getItem(this.KEYS.RESERVATIONS)) || [];
+    },
+
+    addReservation(reservation) {
+      const reservations = this.getReservations();
+      const currentUser = this.getCurrentUser();
+
+      const newReservation = {
+        id: Date.now().toString(),
+        userId: currentUser ? currentUser.email : 'guest',
+        dateCreated: new Date().toISOString(),
+        status: 'Confirmada',
+        ...reservation
+      };
+
+      reservations.push(newReservation);
+      localStorage.setItem(this.KEYS.RESERVATIONS, JSON.stringify(reservations));
+      return newReservation;
+    }
+  };
+
+  StorageManager.init();
+  window.StorageManager = StorageManager;
 
   /* ============================================
      TOASTS
@@ -69,75 +136,124 @@
 
   window.ToastManager = ToastManager;
 
-  /* ============================================
-     FORMULARIOS - Validación visual
+/* ============================================
+     FORMULARIOS - Autenticación simulada
      ============================================ */
 
   function initForms() {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
 
+    // Obtener parámetro de redirección si existe
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectTo = urlParams.get('redirect') || 'dashboard.html';
+
+    // Función auxiliar para formatear el correo como nombre si no existe uno previo
+    function formatNameFromEmail(email) {
+      if (!email) return 'Usuario';
+      const username = email.split('@')[0];
+      // Separa por puntos, guiones o números y capitaliza las palabras
+      return username
+        .replace(/[._-]/g, ' ')
+        .replace(/[0-9]/g, '')
+        .trim()
+        .split(' ')
+        .filter(word => word.length > 0)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ') || 'Usuario';
+    }
+
+    // Manejo de Login
     if (loginForm) {
       loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
-        let valid = true;
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
 
-        // Validar email
-        if (!email.value || !email.value.includes('@')) {
-          email.classList.add('error');
-          document.getElementById('emailHelper').textContent = 'Introduce un correo válido.';
-          document.getElementById('emailHelper').className = 'form-helper error';
-          valid = false;
-        } else {
-          email.classList.remove('error');
-          email.classList.add('success');
-          document.getElementById('emailHelper').textContent = '';
+        if (!emailInput.value || !passwordInput.value) {
+          if (window.ToastManager) window.ToastManager.show('Introduce correo y contraseña.', 'error');
+          return;
         }
-
-        // Validar password
-        if (!password.value || password.value.length < 6) {
-          password.classList.add('error');
-          document.getElementById('passwordHelper').textContent = 'La contraseña debe tener al menos 6 caracteres.';
-          document.getElementById('passwordHelper').className = 'form-helper error';
-          valid = false;
-        } else {
-          password.classList.remove('error');
-          password.classList.add('success');
-          document.getElementById('passwordHelper').textContent = '';
-        }
-
-        if (!valid) return;
 
         const btn = document.getElementById('loginBtn');
-        btn.classList.add('loading');
+        btn?.classList.add('loading');
 
         setTimeout(() => {
-          btn.classList.remove('loading');
-          ToastManager.show('Sesión iniciada correctamente (demo visual).', 'success');
-          setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
-        }, 1500);
+          btn?.classList.remove('loading');
+
+          const users = StorageManager.getUsers();
+          let user = users.find(u => u.email === emailInput.value && u.password === passwordInput.value);
+
+          if (!user) {
+            // Genera el nombre dinámico basado en tu correo en lugar de "Usuario Demo"
+            const generatedName = formatNameFromEmail(emailInput.value);
+            user = { 
+              name: generatedName, 
+              email: emailInput.value 
+            };
+          }
+
+          StorageManager.setCurrentUser(user);
+
+          if (window.ToastManager) {
+            window.ToastManager.show(`Bienvenido, ${user.name}. Redirigiendo...`, 'success');
+          }
+
+          setTimeout(() => {
+            window.location.href = redirectTo;
+          }, 1000);
+        }, 1000);
       });
     }
 
+    // Manejo de Registro
     if (registerForm) {
       registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        const nombreInput = document.getElementById('nombre');
+        const apellidoInput = document.getElementById('apellido');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        if (!emailInput.value || !passwordInput.value) {
+          if (window.ToastManager) window.ToastManager.show('Por favor llena todos los campos obligatorios.', 'error');
+          return;
+        }
+
         const btn = document.getElementById('registerBtn');
-        btn.classList.add('loading');
+        btn?.classList.add('loading');
 
         setTimeout(() => {
-          btn.classList.remove('loading');
-          ToastManager.show('Cuenta creada correctamente (demo visual).', 'success');
-          setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
-        }, 1500);
+          btn?.classList.remove('loading');
+
+          const fullName = (nombreInput?.value || apellidoInput?.value) 
+            ? `${nombreInput?.value || ''} ${apellidoInput?.value || ''}`.trim()
+            : formatNameFromEmail(emailInput.value);
+
+          const newUser = {
+            id: Date.now().toString(),
+            name: fullName,
+            email: emailInput.value,
+            password: passwordInput.value
+          };
+
+          StorageManager.saveUser(newUser);
+          StorageManager.setCurrentUser(newUser);
+
+          if (window.ToastManager) {
+            window.ToastManager.show('Cuenta creada con éxito. Redirigiendo...', 'success');
+          }
+
+          setTimeout(() => {
+            window.location.href = redirectTo;
+          }, 1000);
+        }, 1000);
       });
     }
   }
 
   /* ============================================
-     MODAL genérico
+     MODAL GENÉRICO
      ============================================ */
 
   function initModals() {
@@ -164,12 +280,21 @@
 
     confirmBtn?.addEventListener('click', () => {
       closeModal();
-      ToastManager.show('Reserva confirmada correctamente.', 'success');
+      ToastManager.show('Acción confirmada.', 'success');
     });
 
-    window.openConfirmModal = () => {
+    window.openConfirmModal = (onConfirmCallback) => {
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
+
+      if (typeof onConfirmCallback === 'function') {
+        const handleConfirm = () => {
+          onConfirmCallback();
+          closeModal();
+          confirmBtn.removeEventListener('click', handleConfirm);
+        };
+        confirmBtn.onclick = handleConfirm;
+      }
     };
   }
 

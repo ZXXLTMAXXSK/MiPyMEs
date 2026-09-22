@@ -170,3 +170,34 @@
     transform: none;
   }
 }
+/* ============================================
+   ESTILOS DE PANELES DE RESERVA
+   ============================================ */
+
+.booking-panel {
+  display: none;
+}
+
+.booking-panel.active {
+  display: block !important;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Efecto de selección en tarjetas y horarios */
+.select-card.selected,
+.time-slot.selected {
+  border-color: var(--color-primary) !important;
+  background-color: rgba(79, 70, 229, 0.08) !important;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
