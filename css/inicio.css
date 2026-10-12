@@ -1,0 +1,1469 @@
+/* =====================================================
+   MiPyMEs - INICIO
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6f8fb;
+    color: #172033;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =====================================================
+   NAVBAR
+   ===================================================== */
+
+.navbar {
+    height: 76px;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e4e8ee;
+
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    color: #24446d;
+    text-decoration: none;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.navbar-nav > a {
+    color: #526174;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: color 0.2s ease;
+}
+
+.navbar-nav > a:hover {
+    color: #24446d;
+}
+
+.nav-mis-citas,
+.nav-historial {
+    color: #24446d !important;
+}
+
+.usuario-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.usuario-nav > a:first-child {
+    color: #526174;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    background: #24446d;
+    color: #ffffff !important;
+
+    font-weight: 600 !important;
+
+    transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+    background: #1b385b !important;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero {
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 70px 7%;
+
+    background:
+        linear-gradient(
+            110deg,
+            #eef3f8,
+            #ffffff
+        );
+}
+
+.hero-content {
+    max-width: 720px;
+}
+
+.eyebrow {
+    display: inline-block;
+
+    color: #6d7d91;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.05;
+
+    margin-bottom: 24px;
+    letter-spacing: -2px;
+
+    color: #172033;
+}
+
+.hero h1 strong {
+    display: block;
+    color: #24446d;
+}
+
+.hero p {
+    max-width: 600px;
+
+    color: #68778a;
+
+    font-size: 18px;
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-block;
+
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    padding: 13px 20px;
+
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #24446d;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #1b385b;
+}
+
+.btn-secondary {
+    border: 1px solid #d6dde6;
+
+    background: #ffffff;
+    color: #24446d;
+}
+
+.btn-secondary:hover {
+    background: #f5f7fa;
+}
+
+
+/* =====================================================
+   SECCIONES
+   ===================================================== */
+
+.section {
+    padding: 85px 7%;
+}
+
+.section-header {
+    margin-bottom: 35px;
+}
+
+.section-header .eyebrow {
+    margin-bottom: 10px;
+}
+
+.section-header h2 {
+    font-size: 34px;
+    line-height: 1.2;
+
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #718096;
+}
+
+
+/* =====================================================
+   MÓDULOS
+   ===================================================== */
+
+.modules-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.module-card {
+    background: #ffffff;
+
+    border: 1px solid #e0e6ed;
+    border-radius: 14px;
+
+    padding: 25px;
+
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+
+    transition: 0.2s;
+}
+
+.module-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(30, 50, 70, 0.08);
+}
+
+.module-icon {
+    min-width: 48px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf2f8;
+
+    border-radius: 10px;
+
+    color: #24446d;
+
+    font-size: 22px;
+}
+
+.module-card h3 {
+    margin-bottom: 8px;
+}
+
+.module-card p {
+    color: #718096;
+
+    line-height: 1.5;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   NEGOCIOS
+   ===================================================== */
+
+.businesses-section {
+    background: #ffffff;
+}
+
+.businesses-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.business-card {
+    border: 1px solid #e0e6ed;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    transition: 0.2s;
+}
+
+.business-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(30, 50, 70, 0.08);
+}
+
+.business-cover {
+    height: 150px;
+
+    background: #edf2f8;
+
+    overflow: hidden;
+}
+
+.business-cover img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.cover-placeholder {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #24446d;
+
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.business-info {
+    padding: 20px;
+
+    display: flex;
+    gap: 14px;
+}
+
+.business-logo {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    border-radius: 10px;
+
+    background: #edf2f8;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #24446d;
+
+    font-weight: 800;
+}
+
+.business-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.business-text {
+    min-width: 0;
+}
+
+.business-text h3 {
+    margin-bottom: 7px;
+}
+
+.business-text p {
+    color: #718096;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+.business-text small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #8995a5;
+}
+
+.business-button {
+    width: calc(100% - 40px);
+
+    margin: 0 20px 20px;
+
+    padding: 12px;
+
+    border: 1px solid #d9e0e8;
+
+    background: #ffffff;
+
+    color: #24446d;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    display: flex;
+    justify-content: space-between;
+
+    transition: 0.2s ease;
+}
+
+.business-button:hover {
+    background: #f5f7fa;
+}
+
+
+/* =====================================================
+   MIS CITAS
+   ===================================================== */
+
+.mis-citas-section {
+    background: #f6f8fb;
+}
+
+.mis-citas-container {
+    width: min(1000px, 100%);
+    margin: 0 auto;
+}
+
+.cita-card {
+    background: #ffffff;
+
+    border: 1px solid #e0e6ed;
+    border-radius: 14px;
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+
+    transition: 0.2s ease;
+}
+
+.cita-card:hover {
+    box-shadow:
+        0 10px 25px
+        rgba(30, 50, 70, 0.07);
+}
+
+.cita-main {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.cita-negocio {
+    display: block;
+
+    color: #6d7d91;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    margin-bottom: 6px;
+}
+
+.cita-main h3 {
+    margin-bottom: 7px;
+
+    color: #172033;
+}
+
+.cita-main p {
+    color: #718096;
+
+    font-size: 14px;
+}
+
+.cita-main p strong {
+    color: #24446d;
+}
+
+.cita-details {
+    margin-top: 18px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #edf0f4;
+
+    display: flex;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    color: #68778a;
+
+    font-size: 14px;
+}
+
+.cita-details span {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.estado-cita {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.estado-pending {
+    background: #fff5d8;
+    color: #8a6700;
+}
+
+.estado-confirmed {
+    background: #e8f5ec;
+    color: #2f7d46;
+}
+
+.estado-rejected {
+    background: #f8eaea;
+    color: #a33b3b;
+}
+
+.estado-cancelled,
+.estado-canceled {
+    background: #eef0f3;
+    color: #667085;
+}
+
+.empty-citas {
+    background: #ffffff;
+
+    border: 1px solid #e0e6ed;
+
+    border-radius: 14px;
+
+    padding: 50px 30px;
+
+    text-align: center;
+}
+
+.empty-citas-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #edf2f8;
+
+    color: #24446d;
+
+    font-size: 25px;
+}
+
+.empty-citas h3 {
+    margin-bottom: 8px;
+}
+
+.empty-citas p {
+    color: #718096;
+
+    margin-bottom: 22px;
+}
+
+
+/* =====================================================
+   MI HISTORIAL
+   ===================================================== */
+
+.historial-section {
+    background: #ffffff;
+}
+
+.historial-container {
+    width: min(1000px, 100%);
+    margin: 0 auto;
+}
+
+.historial-filtros {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 28px;
+}
+
+.historial-filtro {
+    border: 1px solid #d8dee8;
+
+    background: #ffffff;
+
+    color: #526174;
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.historial-filtro:hover {
+    border-color: #b8c3d1;
+
+    background: #f5f7fa;
+
+    color: #24446d;
+}
+
+.historial-filtro.active {
+    background: #24446d;
+
+    border-color: #24446d;
+
+    color: #ffffff;
+}
+
+.historial-card {
+    background: #ffffff;
+
+    border: 1px solid #e0e6ed;
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+
+    transition: 0.2s ease;
+}
+
+.historial-card:hover {
+    box-shadow:
+        0 10px 25px
+        rgba(30, 50, 70, 0.07);
+}
+
+.historial-card-main {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.historial-card-info {
+    min-width: 0;
+}
+
+.historial-modulo {
+    display: inline-block;
+
+    color: #6d7d91;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    margin-bottom: 6px;
+}
+
+.historial-card h3 {
+    margin-bottom: 7px;
+
+    color: #172033;
+}
+
+.historial-servicio {
+    color: #718096;
+
+    font-size: 14px;
+}
+
+.historial-card-details {
+    margin-top: 18px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #edf0f4;
+
+    display: flex;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    color: #68778a;
+
+    font-size: 14px;
+}
+
+.historial-card-details span {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.historial-estado {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.historial-estado.confirmed {
+    background: #e8f5ec;
+
+    color: #2f7d46;
+}
+
+.historial-estado.rejected {
+    background: #f8eaea;
+
+    color: #a33b3b;
+}
+
+.historial-empty {
+    background: #ffffff;
+
+    border: 1px solid #e0e6ed;
+
+    border-radius: 14px;
+
+    padding: 50px 30px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   MODAL NEGOCIO
+   ===================================================== */
+
+.negocio-modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    z-index: 100;
+
+    overflow-y: auto;
+}
+
+.negocio-modal.active {
+    display: flex;
+
+    animation: modalFade 0.2s ease;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.negocio-modal-content {
+    position: relative;
+
+    width: min(950px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.18);
+
+    animation: modalUp 0.25s ease;
+}
+
+@keyframes modalUp {
+    from {
+        transform: translateY(20px);
+
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    z-index: 5;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    color: #172033;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, 0.12);
+}
+
+.modal-close:hover {
+    background: #f2f4f7;
+}
+
+
+/* =====================================================
+   DETALLE DEL NEGOCIO
+   ===================================================== */
+
+.detalle-cover {
+    height: 220px;
+
+    background: #edf2f8;
+
+    overflow: hidden;
+}
+
+.detalle-cover img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.detalle-cover-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #24446d;
+
+    font-size: 28px;
+
+    font-weight: 800;
+}
+
+.detalle-header {
+    padding: 28px 32px 15px;
+
+    display: flex;
+
+    gap: 18px;
+
+    align-items: center;
+}
+
+.detalle-logo {
+    width: 70px;
+    height: 70px;
+
+    min-width: 70px;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background: #edf2f8;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #24446d;
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+.detalle-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.detalle-header h2 {
+    font-size: 30px;
+
+    margin-bottom: 7px;
+}
+
+.detalle-header p {
+    color: #718096;
+
+    line-height: 1.5;
+}
+
+.detalle-contacto {
+    padding: 0 32px 25px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    color: #68778a;
+
+    font-size: 14px;
+}
+
+.detalle-section {
+    padding: 30px 32px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+.detalle-section-header {
+    margin-bottom: 20px;
+}
+
+.detalle-section-header h3 {
+    font-size: 24px;
+}
+
+.cliente-servicios {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.cliente-servicio {
+    border: 1px solid #e0e6ed;
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    transition: 0.2s ease;
+}
+
+.cliente-servicio:hover {
+    border-color: #cbd5e1;
+
+    box-shadow:
+        0 7px 20px
+        rgba(30, 50, 70, 0.06);
+}
+
+.cliente-servicio h4 {
+    font-size: 16px;
+
+    margin-bottom: 6px;
+}
+
+.cliente-servicio p {
+    color: #718096;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 10px;
+}
+
+.servicio-meta {
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+}
+
+.servicio-meta strong {
+    color: #24446d;
+}
+
+.servicio-meta span {
+    color: #718096;
+
+    font-size: 13px;
+}
+
+.btn-reservar {
+    flex-shrink: 0;
+
+    border: none;
+
+    background: #24446d;
+
+    color: #ffffff;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-reservar:hover {
+    background: #1b385b;
+}
+
+.empleados-cliente {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.empleado-card {
+    border: 1px solid #e0e6ed;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.empleado-avatar {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    border-radius: 50%;
+
+    background: #edf2f8;
+
+    color: #24446d;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 800;
+}
+
+.empleado-card strong {
+    display: block;
+
+    margin-bottom: 4px;
+}
+
+.empleado-card span {
+    display: block;
+
+    color: #718096;
+
+    font-size: 13px;
+}
+
+.empty-detalle {
+    padding: 25px;
+
+    text-align: center;
+
+    background: #f7f9fb;
+
+    border-radius: 10px;
+
+    color: #718096;
+}
+
+
+/* =====================================================
+   ESTADOS
+   ===================================================== */
+
+.loading,
+.empty,
+.error,
+.empty-businesses {
+    color: #718096;
+
+    padding: 30px 0;
+}
+
+.empty-businesses {
+    text-align: center;
+
+    grid-column: 1 / -1;
+}
+
+.empty-businesses h3 {
+    color: #172033;
+
+    margin-bottom: 8px;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+    background: #172033;
+
+    color: #ffffff;
+
+    padding: 30px 7%;
+}
+
+.footer-content {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.footer-content span {
+    color: #aab4c2;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .modules-grid,
+    .businesses-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cliente-servicios {
+        grid-template-columns: 1fr;
+    }
+
+    .empleados-cliente {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        height: auto;
+        min-height: 64px;
+
+        padding: 12px 20px;
+    }
+
+    .navbar-nav {
+        gap: 10px;
+    }
+
+    .navbar-nav > a {
+        display: none;
+    }
+
+    .usuario-nav {
+        gap: 7px;
+    }
+
+    .usuario-nav > a:first-child {
+        display: none;
+    }
+
+    .btn-nav {
+        padding: 9px 12px;
+
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 60px 25px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        text-align: center;
+    }
+
+    .section {
+        padding: 60px 25px;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+    }
+
+    .modules-grid,
+    .businesses-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cita-main {
+        flex-direction: column;
+    }
+
+    .cita-details {
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+    .historial-filtros {
+        gap: 7px;
+    }
+
+    .historial-filtro {
+        flex: 1 1 calc(50% - 7px);
+
+        min-width: 120px;
+    }
+
+    .historial-card-main {
+        flex-direction: column;
+    }
+
+    .historial-card-details {
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+    .detalle-header {
+        padding: 25px 20px 15px;
+
+        align-items: flex-start;
+    }
+
+    .detalle-header h2 {
+        font-size: 24px;
+    }
+
+    .detalle-contacto,
+    .detalle-section {
+        padding-left: 20px;
+
+        padding-right: 20px;
+    }
+
+    .empleados-cliente {
+        grid-template-columns: 1fr;
+    }
+
+    .cliente-servicio {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .btn-reservar {
+        width: 100%;
+    }
+
+    .negocio-modal {
+        padding: 12px;
+    }
+
+    .negocio-modal-content {
+        max-height: 94vh;
+    }
+
+    .detalle-cover {
+        height: 160px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 420px) {
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .historial-filtro {
+        flex: 1 1 100%;
+    }
+
+    .cita-card,
+    .historial-card {
+        padding: 18px;
+    }
+
+    .empty-citas,
+    .historial-empty {
+        padding: 40px 18px;
+    }
+}

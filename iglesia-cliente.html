@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#244b78">
+    <title>Eventos de Iglesia | MiPyMEs</title>
+
+    <link rel="stylesheet" href="css/iglesia-cliente.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/iglesia-cliente.js" defer></script>
+</head>
+<body>
+    <header class="barra">
+        <a class="marca" href="index.html">MiPyMEs</a>
+        <div class="usuario">
+            <span id="nombreCliente">Cargando cuenta...</span>
+            <button id="btnCerrarSesion" type="button">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <a href="index.html" class="volver">← Volver a los negocios</a>
+
+        <section class="encabezado">
+            <span class="etiqueta">IGLESIA Y COMUNIDAD</span>
+            <h1 id="nombreIglesia">Cargando Iglesia...</h1>
+            <p id="descripcionIglesia">
+                Consulta los próximos eventos y reserva tu lugar.
+            </p>
+            <p id="contactoIglesia"></p>
+        </section>
+
+        <section class="seccion">
+            <div class="titulo-seccion">
+                <div>
+                    <h2>Próximos eventos</h2>
+                    <p>Elige el evento al que deseas asistir.</p>
+                </div>
+            </div>
+            <div id="eventosCliente" class="eventos-grid">
+                <p>Cargando eventos...</p>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <div class="titulo-seccion">
+                <div>
+                    <h2>Mis inscripciones</h2>
+                    <p>Consulta tus registros y cancela si ya no puedes asistir.</p>
+                </div>
+                <button id="btnActualizar" class="btn-secundario" type="button">
+                    Actualizar
+                </button>
+            </div>
+            <div id="misInscripciones" class="inscripciones">
+                <p>Cargando inscripciones...</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

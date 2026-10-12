@@ -1,371 +1,433 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Plataforma SaaS de gestión de reservas para barberías, eventos, iglesias y restaurantes." />
-  <title>ReservaPro — Gestiona tus reservas, haz crecer tu negocio</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/animation.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MiPyMEs | Inicio</title>
+
+    <link
+        rel="stylesheet"
+        href="css/inicio.css"
+    >
+
 </head>
+
 <body>
-  <a href="#main" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- ============ NAVBAR ============ -->
-  <header class="navbar" id="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo" aria-label="ReservaPro inicio">
-        <span class="logo-mark">R</span>
-        <span>ReservaPro</span>
-      </a>
+    <!-- ==========================================
+         NAVBAR
+    =========================================== -->
 
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#soluciones">Soluciones</a>
-        <a href="#caracteristicas">Características</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+    <header class="navbar">
 
-      <div class="nav-actions">
-        <a href="login.html" class="btn btn-ghost btn-sm">Iniciar sesión</a>
-        <a href="registro.html" class="btn btn-primary btn-sm">Registrarse</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+        <a
+            href="index.html"
+            class="logo"
+        >
+            MiPyMEs
+        </a>
+
+        <nav class="navbar-nav">
+
+            <a href="#modulos">
+                Módulos
+            </a>
+
+            <a href="#negocios">
+                Negocios
+            </a>
+
+            <a
+                href="#misCitas"
+                id="linkMisCitas"
+                class="nav-mis-citas"
+            >
+                Mis citas
+            </a>
+
+            <a
+                href="#historial"
+                id="linkHistorial"
+                class="nav-historial"
+            >
+                Mi historial
+            </a>
+
+            <div
+                id="usuarioNav"
+                class="usuario-nav"
+            >
+
+                <a href="login.html">
+                    Iniciar sesión
+                </a>
+
+                <a
+                    href="registro.html"
+                    class="btn-nav"
+                >
+                    Crear cuenta
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==========================================
+         CONTENIDO
+    =========================================== -->
+
+    <main>
+
+
+        <!-- ==========================================
+             HERO
+        =========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    Plataforma para MiPyMEs
+                </span>
+
+                <h1 id="heroTitulo">
+
+                    Encuentra servicios,
+                    <strong>
+                        reserva fácilmente.
+                    </strong>
+
+                </h1>
+
+                <p id="heroDescripcion">
+
+                    Descubre negocios, servicios y espacios
+                    disponibles en un solo lugar.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#negocios"
+                        class="btn btn-primary"
+                    >
+                        Explorar negocios
+                    </a>
+
+                    <a
+                        href="#modulos"
+                        class="btn btn-secondary"
+                    >
+                        Ver módulos
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             MÓDULOS
+        =========================================== -->
+
+        <section
+            class="section"
+            id="modulos"
+        >
+
+            <div class="section-header">
+
+                <span class="eyebrow">
+                    Categorías
+                </span>
+
+                <h2>
+                    ¿Qué estás buscando?
+                </h2>
+
+                <p>
+                    Explora los diferentes tipos de
+                    servicios disponibles.
+                </p>
+
+            </div>
+
+
+            <div
+                class="modules-grid"
+                id="modulesGrid"
+            >
+
+                <div class="loading">
+                    Cargando módulos...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             NEGOCIOS
+        =========================================== -->
+
+        <section
+            class="section businesses-section"
+            id="negocios"
+        >
+
+            <div class="section-header">
+
+                <span class="eyebrow">
+                    Negocios
+                </span>
+
+                <h2>
+                    Negocios disponibles
+                </h2>
+
+                <p>
+                    Conoce los negocios registrados
+                    en MiPyMEs.
+                </p>
+
+            </div>
+
+
+            <div
+                class="businesses-grid"
+                id="businessesGrid"
+            >
+
+                <div class="loading">
+                    Cargando negocios...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             MIS CITAS
+        =========================================== -->
+
+        <section
+            class="section mis-citas-section"
+            id="misCitas"
+        >
+
+            <div class="section-header">
+
+                <span class="eyebrow">
+                    Mi cuenta
+                </span>
+
+                <h2>
+                    Mis citas
+                </h2>
+
+                <p>
+                    Consulta las reservas que todavía
+                    están pendientes.
+                </p>
+
+            </div>
+
+
+            <div
+                id="misCitasContainer"
+                class="mis-citas-container"
+            >
+
+                <div class="loading">
+                    Cargando tus citas...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             MI HISTORIAL
+        =========================================== -->
+
+        <section
+            class="section historial-section"
+            id="historial"
+        >
+
+            <div class="section-header">
+
+                <span class="eyebrow">
+                    Mi cuenta
+                </span>
+
+                <h2>
+                    Mi historial
+                </h2>
+
+                <p>
+                    Consulta tus reservas anteriores
+                    y su estado.
+                </p>
+
+            </div>
+
+
+            <!-- ======================================
+                 FILTROS DEL HISTORIAL
+            ======================================= -->
+
+            <div class="historial-filtros">
+
+                <button
+                    type="button"
+                    class="historial-filtro active"
+                    data-modulo="todos"
+                >
+                    Todos
+                </button>
+
+                <button
+                    type="button"
+                    class="historial-filtro"
+                    data-modulo="barberia"
+                >
+                    Barbería
+                </button>
+
+                <button
+                    type="button"
+                    class="historial-filtro"
+                    data-modulo="iglesia"
+                >
+                    Iglesia
+                </button>
+
+                <button
+                    type="button"
+                    class="historial-filtro"
+                    data-modulo="restaurante"
+                >
+                    Restaurante
+                </button>
+
+            </div>
+
+
+            <!-- ======================================
+                 CONTENEDOR DEL HISTORIAL
+            ======================================= -->
+
+            <div
+                id="historialContainer"
+                class="historial-container"
+            >
+
+                <div class="loading">
+                    Cargando historial...
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==========================================
+         MODAL / DETALLE DEL NEGOCIO
+    =========================================== -->
+
+    <div
+        id="negocioModal"
+        class="negocio-modal"
+    >
+
+        <div class="negocio-modal-content">
+
+
+            <!-- CERRAR -->
+
+            <button
+                type="button"
+                id="btnCerrarNegocio"
+                class="modal-close"
+            >
+                ×
+            </button>
+
+
+            <!-- ENCABEZADO -->
+
+            <div
+                id="negocioDetalle"
+                class="negocio-detalle"
+            >
+
+                <div class="loading">
+                    Cargando negocio...
+                </div>
+
+            </div>
+
+
+        </div>
+
     </div>
-  </header>
 
-  <!-- Menú móvil -->
-  <div class="menu-overlay" id="menuOverlay"></div>
-  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#soluciones">Soluciones</a>
-      <a href="#caracteristicas">Características</a>
-      <a href="#contacto">Contacto</a>
-      <a href="login.html">Iniciar sesión</a>
-      <a href="registro.html" class="btn btn-primary btn-block mt-md">Crear cuenta</a>
-    </nav>
-  </aside>
 
-  <main id="main">
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
 
-    <!-- ============ HERO ============ -->
-    <section class="hero" id="inicio">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-text">
-            <span class="hero-badge reveal">
-              <span class="dot"></span>
-              Plataforma todo-en-uno para reservas
+    <footer>
+
+        <div class="footer-content">
+
+            <strong>
+                MiPyMEs
+            </strong>
+
+            <span>
+                Gestión, reservas y servicios.
             </span>
-            <h1 class="reveal reveal-delay-1">
-              Gestiona tus reservas.<br />
-              <span class="text-gradient">Haz crecer tu negocio.</span>
-            </h1>
-            <p class="hero-subtitle reveal reveal-delay-2">
-              La plataforma integral que conecta barberías, salones de eventos,
-              iglesias y restaurantes con sus clientes. Reservas inteligentes,
-              calendarios en tiempo real y cero complicaciones.
-            </p>
-            <div class="hero-cta reveal reveal-delay-3">
-              <a href="registro.html" class="btn btn-primary btn-lg">
-                Comenzar gratis
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
-              <a href="#como-funciona" class="btn btn-secondary btn-lg">Ver cómo funciona</a>
-            </div>
-          </div>
 
-          <div class="hero-visual reveal reveal-delay-2" aria-hidden="true">
-            <div class="hero-orbit"></div>
-
-            <div class="hero-card float-1" style="top: 5%; left: 0;">
-              <div class="hero-card-icon" style="background: rgba(201,162,39,.12); color:#c9a227;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-              </div>
-              <div>
-                <div style="font-weight:600;">Barbería</div>
-                <div style="font-size:.75rem;color:var(--color-text-muted);">10:30 · Confirmada</div>
-              </div>
-            </div>
-
-            <div class="hero-card float-2" style="top: 25%; right: 0;">
-              <div class="hero-card-icon" style="background: rgba(185,28,28,.12); color:#b91c1c;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/></svg>
-              </div>
-              <div>
-                <div style="font-weight:600;">Restaurante</div>
-                <div style="font-size:.75rem;color:var(--color-text-muted);">Mesa 12 · 4 pers.</div>
-              </div>
-            </div>
-
-            <div class="hero-card float-3" style="bottom: 12%; left: 5%;">
-              <div class="hero-card-icon" style="background: rgba(37,99,235,.12); color:#2563eb;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              </div>
-              <div>
-                <div style="font-weight:600;">Evento</div>
-                <div style="font-size:.75rem;color:var(--color-text-muted);">Sábado · 200 pers.</div>
-              </div>
-            </div>
-
-            <div class="hero-center-card float-4">
-              <h4>Próximas reservas</h4>
-              <p>Hoy · 8 confirmadas</p>
-              <div class="mini-calendar">
-                <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
-                <span>1</span><span>2</span><span class="active">3</span><span>4</span><span>5</span><span>6</span><span>7</span>
-                <span>8</span><span>9</span><span>10</span><span class="active">11</span><span>12</span><span>13</span><span>14</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SOLUCIONES ============ -->
-    <section class="section" id="soluciones">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>Una plataforma, <span class="text-gradient">múltiples soluciones</span></h2>
-          <p>Adaptamos la experiencia de reservas a las necesidades específicas de cada tipo de negocio.</p>
         </div>
 
-        <div class="solutions-grid">
-          <a href="barberia.html" class="solution-card reveal" data-module="barberia">
-            <div class="solution-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-            </div>
-            <h3>Barbería & Estética</h3>
-            <p>Gestiona citas, empleados, servicios y horarios con una interfaz elegante y profesional.</p>
-            <span class="solution-link">
-              Explorar
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
+    </footer>
 
-          <a href="eventos.html" class="solution-card reveal reveal-delay-1" data-module="eventos">
-            <div class="solution-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
-            </div>
-            <h3>Salón de Eventos</h3>
-            <p>Paquetes, cotizaciones, control de aforo y calendario de disponibilidad en tiempo real.</p>
-            <span class="solution-link">
-              Explorar
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
 
-          <a href="iglesia.html" class="solution-card reveal reveal-delay-2" data-module="iglesia">
-            <div class="solution-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v6"/><path d="M9 5h6"/><path d="M5 22V12l7-5 7 5v10"/><path d="M9 22v-6h6v6"/></svg>
-            </div>
-            <h3>Iglesia & Comunidad</h3>
-            <p>Organiza eventos, cultos, horarios y gestiona la asistencia de tu comunidad.</p>
-            <span class="solution-link">
-              Explorar
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
+    <!-- ==========================================
+         SCRIPTS
+    =========================================== -->
 
-          <a href="restaurante.html" class="solution-card reveal reveal-delay-3" data-module="restaurante">
-            <div class="solution-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/></svg>
-            </div>
-            <h3>Restaurante</h3>
-            <p>Mapa visual de mesas, zonas, horarios y gestión de reservas por número de comensales.</p>
-            <span class="solution-link">
-              Explorar
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- ============ CÓMO FUNCIONA ============ -->
-    <section class="section" id="como-funciona" style="background: var(--color-bg-soft);">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>Cómo funciona</h2>
-          <p>En cuatro simples pasos, tus clientes tendrán su reserva confirmada.</p>
-        </div>
+    <script src="js/supabase.js"></script>
 
-        <div class="steps-grid">
-          <article class="step-card reveal">
-            <div class="step-number">01</div>
-            <h3>Elige el servicio</h3>
-            <p>Explora el catálogo de servicios disponibles con precios y duración estimada.</p>
-          </article>
-          <article class="step-card reveal reveal-delay-1">
-            <div class="step-number">02</div>
-            <h3>Selecciona fecha</h3>
-            <p>Consulta la disponibilidad en tiempo real y elige el día que mejor te convenga.</p>
-          </article>
-          <article class="step-card reveal reveal-delay-2">
-            <div class="step-number">03</div>
-            <h3>Elige horario</h3>
-            <p>Selecciona entre los horarios disponibles según el empleado o recurso elegido.</p>
-          </article>
-          <article class="step-card reveal reveal-delay-3">
-            <div class="step-number">04</div>
-            <h3>Confirma</h3>
-            <p>Recibe la confirmación al instante y gestiona tu reserva desde cualquier dispositivo.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- ============ CARACTERÍSTICAS ============ -->
-    <section class="section" id="caracteristicas">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>Todo lo que necesitas</h2>
-          <p>Herramientas profesionales diseñadas para que tu negocio funcione sin fricción.</p>
-        </div>
+    <script src="js/inicio.js"></script>
 
-        <div class="features-grid">
-          <div class="feature-item reveal">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div>
-              <h4>Reservas 24/7</h4>
-              <p>Tus clientes reservan cuando quieran, desde cualquier dispositivo.</p>
-            </div>
-          </div>
-
-          <div class="feature-item reveal reveal-delay-1">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            </div>
-            <div>
-              <h4>Calendario inteligente</h4>
-              <p>Visualiza todas tus reservas en un solo lugar y evita solapamientos.</p>
-            </div>
-          </div>
-
-          <div class="feature-item reveal reveal-delay-2">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div>
-              <h4>Gestión de clientes</h4>
-              <p>Historial, preferencias y comunicación directa desde la plataforma.</p>
-            </div>
-          </div>
-
-          <div class="feature-item reveal">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <div>
-              <h4>Reportes y métricas</h4>
-              <p>Analiza ingresos, ocupación y rendimiento de tu negocio en tiempo real.</p>
-            </div>
-          </div>
-
-          <div class="feature-item reveal reveal-delay-1">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div>
-              <h4>Seguridad y confianza</h4>
-              <p>Cifrado de extremo a extremo y cumplimiento de normativas de datos.</p>
-            </div>
-          </div>
-
-          <div class="feature-item reveal reveal-delay-2">
-            <div class="feature-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            </div>
-            <div>
-              <h4>Multiplataforma</h4>
-              <p>Funciona perfectamente en móvil, tablet, laptop y monitores 4K.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CTA FINAL ============ -->
-    <section class="section" id="contacto">
-      <div class="container">
-        <div class="reveal" style="background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary), var(--color-accent)); border-radius: var(--radius-xl); padding: clamp(2rem, 5vw, 4rem); text-align: center; color: #fff;">
-          <h2 style="color:#fff; margin-bottom: .75rem;">¿Listo para transformar tu negocio?</h2>
-          <p style="color: rgba(255,255,255,.85); max-width: 540px; margin: 0 auto 2rem; font-size: 1.0625rem;">
-            Únete a cientos de negocios que ya gestionan sus reservas de forma inteligente.
-          </p>
-          <div style="display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap;">
-            <a href="registro.html" class="btn btn-lg" style="background:#fff; color: var(--color-primary);">Crear cuenta gratis</a>
-            <a href="login.html" class="btn btn-lg" style="background: rgba(255,255,255,.15); color:#fff; border:1px solid rgba(255,255,255,.3);">Iniciar sesión</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <span class="logo-mark">R</span>
-            <span>ReservaPro</span>
-          </a>
-          <p>La plataforma integral de reservas para negocios modernos. Simple, elegante y potente.</p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Producto</h5>
-          <ul>
-            <li><a href="#soluciones">Soluciones</a></li>
-            <li><a href="#caracteristicas">Características</a></li>
-            <li><a href="#como-funciona">Cómo funciona</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Módulos</h5>
-          <ul>
-            <li><a href="barberia.html">Barbería</a></li>
-            <li><a href="eventos.html">Eventos</a></li>
-            <li><a href="iglesia.html">Iglesia</a></li>
-            <li><a href="restaurante.html">Restaurante</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <ul>
-            <li><a href="#">Términos</a></li>
-            <li><a href="#">Privacidad</a></li>
-            <li><a href="#">Cookies</a></li>
-            <li><a href="#">Contacto</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2025 ReservaPro. Todos los derechos reservados.</span>
-        <span>Hecho con HTML, CSS y JavaScript Vanilla.</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ============ TOASTS ============ -->
-  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
-
-  <script src="js/main.js"></script>
-  <script src="js/navigation.js"></script>
-  <script src="js/animations.js"></script>
 </body>
+
 </html>

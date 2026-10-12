@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #172033;
+}
+
+.registro-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.registro-card {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border: 1px solid #e1e6ed;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(20, 35, 55, 0.08);
+}
+
+.logo {
+    text-align: center;
+    color: #24446d;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.registro-header span {
+    color: #718096;
+    font-size: 14px;
+}
+
+.registro-header h1 {
+    margin-top: 7px;
+    font-size: 30px;
+}
+
+.registro-header p {
+    color: #718096;
+    line-height: 1.5;
+    margin-top: 10px;
+    margin-bottom: 28px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 47px;
+    border: 1px solid #d7dee8;
+    border-radius: 9px;
+    padding: 0 14px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #24446d;
+    box-shadow: 0 0 0 3px rgba(36, 68, 109, 0.1);
+}
+
+button {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 9px;
+    background: #24446d;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #1c3657;
+}
+
+button:disabled {
+    opacity: 0.6;
+}
+
+.mensaje {
+    min-height: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #c0392b;
+}
+
+.mensaje.exito {
+    color: #23804a;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.login-link p {
+    color: #718096;
+    margin-bottom: 7px;
+}
+
+.login-link a {
+    color: #24446d;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 550px) {
+
+    .registro-page {
+        padding: 18px;
+    }
+
+    .registro-card {
+        padding: 30px 22px;
+    }
+
+}
+
+
+.tipo-cuenta {
+    border: 0;
+    padding: 0;
+    margin: 24px 0;
+    min-width: 0;
+}
+
+.tipo-cuenta legend {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.opcion-cuenta {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #d7dee8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.opcion-cuenta:has(input:checked) {
+    border-color: #24446d;
+    background: #f2f6fb;
+}
+
+.opcion-cuenta input {
+    width: 17px;
+    height: 17px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    accent-color: #24446d;
+}
+
+.opcion-cuenta span {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.opcion-cuenta strong {
+    font-size: 14px;
+}
+
+.opcion-cuenta small,
+.ayuda,
+.seccion-descripcion {
+    color: #718096;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.seccion-titulo {
+    font-size: 18px;
+    margin: 25px 0 16px;
+}
+
+#datosNegocio[hidden] {
+    display: none !important;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #d7dee8;
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #172033;
+    background: #fff;
+    outline: none;
+}
+
+.form-group select {
+    min-height: 47px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #24446d;
+    box-shadow: 0 0 0 3px rgba(36, 68, 109, 0.1);
+}
+
+.ayuda {
+    display: block;
+    margin-top: 7px;
+}
+
+.registro-card {
+    max-width: 560px;
+}
+
+button:focus-visible,
+.opcion-cuenta:focus-within {
+    outline: 2px solid #24446d;
+    outline-offset: 3px;
+}
