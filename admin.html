@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MiPyMEs | Administración</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =============================================
+         NAVBAR
+    ============================================== -->
+
+    <header class="navbar">
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            MiPyMEs
+        </a>
+
+
+        <div class="usuario">
+
+            <strong id="nombreUsuario">
+                Administrador
+            </strong>
+
+            <span>
+                Administrador del negocio
+            </span>
+
+        </div>
+
+
+        <button
+            id="btnCerrarSesion"
+            class="btn-outline"
+            type="button"
+        >
+            Cerrar sesión
+        </button>
+
+    </header>
+
+
+    <!-- =============================================
+         CONTENIDO PRINCIPAL
+    ============================================== -->
+
+    <main class="admin-container">
+
+
+        <!-- =============================================
+             ENCABEZADO
+        ============================================== -->
+
+        <section class="hero-admin">
+
+            <span>
+                Panel de administración
+            </span>
+
+            <h1>
+                Bienvenido
+            </h1>
+
+            <p>
+                Administra tu negocio desde MiPyMEs.
+            </p>
+
+            <strong id="nombreNegocio">
+                Cargando negocio...
+            </strong>
+
+        </section>
+
+
+        <!-- =============================================
+             ESTADÍSTICAS
+        ============================================== -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <span>
+                    Servicios
+                </span>
+
+                <strong id="totalServicios">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Empleados
+                </span>
+
+                <strong id="totalEmpleados">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Horarios
+                </span>
+
+                <strong id="totalHorarios">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Citas
+                </span>
+
+                <strong id="totalCitas">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================================
+             SERVICIOS
+        ============================================== -->
+
+        <section class="admin-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        Gestión
+                    </span>
+
+                    <h2>
+                        Servicios
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="btnNuevoServicio"
+                    class="btn-primary"
+                    type="button"
+                >
+                    + Agregar servicio
+                </button>
+
+            </div>
+
+
+            <div
+                id="serviciosContainer"
+                class="cards-grid"
+            >
+
+                <p class="loading">
+                    Cargando servicios...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================================
+             EMPLEADOS
+        ============================================== -->
+
+        <section class="admin-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        Equipo
+                    </span>
+
+                    <h2>
+                        Empleados
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="btnNuevoEmpleado"
+                    class="btn-primary"
+                    type="button"
+                >
+                    + Agregar empleado
+                </button>
+
+            </div>
+
+
+            <div
+                id="empleadosContainer"
+                class="cards-grid"
+            >
+
+                <p class="loading">
+                    Cargando empleados...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================================
+             HORARIOS
+             
+             LOS HORARIOS SON AUTOMÁTICOS:
+             LUNES A VIERNES
+             09:00 - 18:00
+        ============================================== -->
+
+        <section class="admin-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        Disponibilidad
+                    </span>
+
+                    <h2>
+                        Horarios
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="horariosContainer">
+
+                <p class="loading">
+                    Cargando horarios...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================================
+             CITAS
+        ============================================== -->
+
+        <section class="admin-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        Reservaciones
+                    </span>
+
+                    <h2>
+                        Citas de clientes
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="citasContainer">
+
+                <p class="loading">
+                    Cargando citas...
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =============================================
+         MODAL SERVICIO
+    ============================================== -->
+
+    <div
+        id="modalServicio"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+
+            <button
+                class="modal-close"
+                type="button"
+                onclick="cerrarModal('modalServicio')"
+            >
+                ×
+            </button>
+
+
+            <h2 id="tituloModalServicio">
+                Agregar servicio
+            </h2>
+
+
+            <form id="formServicio">
+
+                <input
+                    type="hidden"
+                    id="servicioId"
+                >
+
+
+                <label for="servicioNombre">
+                    Nombre del servicio
+                </label>
+
+                <input
+                    type="text"
+                    id="servicioNombre"
+                    placeholder="Ej. Corte clásico"
+                    required
+                >
+
+
+                <label for="servicioDescripcion">
+                    Descripción
+                </label>
+
+                <textarea
+                    id="servicioDescripcion"
+                    placeholder="Descripción del servicio"
+                ></textarea>
+
+
+                <label for="servicioPrecio">
+                    Precio
+                </label>
+
+                <input
+                    type="number"
+                    id="servicioPrecio"
+                    min="0"
+                    step="0.01"
+                    placeholder="150"
+                    required
+                >
+
+
+                <label for="servicioDuracion">
+                    Duración en minutos
+                </label>
+
+                <input
+                    type="number"
+                    id="servicioDuracion"
+                    min="1"
+                    placeholder="30"
+                    required
+                >
+
+
+                <button
+                    class="btn-primary"
+                    type="submit"
+                >
+                    Guardar servicio
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================
+         MODAL EMPLEADO
+    ============================================== -->
+
+    <div
+        id="modalEmpleado"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+
+            <button
+                class="modal-close"
+                type="button"
+                onclick="cerrarModal('modalEmpleado')"
+            >
+                ×
+            </button>
+
+
+            <h2 id="tituloModalEmpleado">
+                Agregar empleado
+            </h2>
+
+
+            <form id="formEmpleado">
+
+                <input
+                    type="hidden"
+                    id="empleadoId"
+                >
+
+
+                <label for="empleadoNombre">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="empleadoNombre"
+                    placeholder="Nombre del empleado"
+                    required
+                >
+
+
+                <label for="empleadoDescripcion">
+                    Descripción
+                </label>
+
+                <textarea
+                    id="empleadoDescripcion"
+                    placeholder="Descripción o información del empleado"
+                ></textarea>
+
+
+                <button
+                    class="btn-primary"
+                    type="submit"
+                >
+                    Guardar empleado
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================
+         LIBRERÍAS
+    ============================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <script
+        src="js/supabase.js"
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/sweetalert2@11"
+    ></script>
+
+    <script
+        src="js/admin.js"
+    ></script>
+
+
+</body>
+
+</html>

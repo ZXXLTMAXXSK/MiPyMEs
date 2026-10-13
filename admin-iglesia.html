@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiPyMEs | Panel de Iglesia</title>
+  <link rel="stylesheet" href="css/admin-iglesia.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="index.html">MiPyMEs</a>
+    <div class="user-info">
+      <strong id="nombreUsuario">Administrador</strong>
+      <span>Administración de Iglesia/Comunidad</span>
+    </div>
+    <button id="btnCerrarSesion" class="btn btn-outline" type="button">Cerrar sesión</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span>Panel de administración</span>
+      <h1> Iglesia / Comunidad</h1>
+      <p>Organiza misas, eventos especiales y controla el aforo.</p>
+      <strong id="nombreNegocio">Cargando comunidad...</strong>
+    </section>
+
+    <section class="stats">
+      <article class="stat"><span>Eventos activos</span><strong id="totalEventos">0</strong></article>
+      <article class="stat"><span>Asistentes registrados</span><strong id="totalAsistentes">0</strong></article>
+      <article class="stat"><span>Capacidad total</span><strong id="capacidadTotal">0</strong></article>
+      <article class="stat"><span>Lugares disponibles</span><strong id="lugaresDisponibles">0</strong></article>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div><span>Organización</span><h2>Misas y eventos</h2></div>
+        <button id="btnNuevoEvento" class="btn btn-primary" type="button">+ Crear evento</button>
+      </div>
+      <div id="eventosContainer" class="event-grid"><p class="muted">Cargando eventos...</p></div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div><span>Control de acceso</span><h2>Asistentes</h2></div>
+        <button id="btnActualizar" class="btn btn-outline" type="button">Actualizar datos</button>
+      </div>
+      <div class="filters">
+        <label for="filtroEvento">Filtrar por evento</label>
+        <select id="filtroEvento"><option value="">Todos los eventos</option></select>
+      </div>
+      <div id="asistentesContainer" class="table-wrap"><p class="muted">Cargando asistentes...</p></div>
+    </section>
+  </main>
+
+  <div id="modalEvento" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close="modalEvento" aria-label="Cerrar">×</button>
+      <h2 id="tituloModalEvento">Crear evento</h2>
+      <form id="formEvento">
+        <input type="hidden" id="eventoId">
+        <label for="eventoTitulo">Nombre de la misa o evento</label>
+        <input id="eventoTitulo" maxlength="120" required placeholder="Ej. Misa dominical">
+        <label for="eventoDescripcion">Descripción</label>
+        <textarea id="eventoDescripcion" maxlength="1000" placeholder="Información del evento"></textarea>
+        <div class="form-row">
+          <div><label for="eventoFecha">Fecha</label><input id="eventoFecha" type="date" required></div>
+          <div><label for="eventoHora">Hora</label><input id="eventoHora" type="time" required></div>
+        </div>
+        <label for="eventoAforo">Aforo máximo</label>
+        <input id="eventoAforo" type="number" min="1" max="100000" required value="100">
+        <label class="check-row"><input id="eventoActivo" type="checkbox" checked> Evento activo y visible</label>
+        <button class="btn btn-primary full" type="submit">Guardar evento</button>
+        <p id="mensajeEvento" class="form-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="modalAsistente" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close="modalAsistente" aria-label="Cerrar">×</button>
+      <h2>Registrar asistente</h2>
+      <form id="formAsistente">
+        <label for="asistenteEvento">Misa o evento</label>
+        <select id="asistenteEvento" required></select>
+        <label for="asistenteNombre">Nombre completo</label>
+        <input id="asistenteNombre" maxlength="120" required>
+        <label for="asistenteTelefono">Teléfono (opcional)</label>
+        <input id="asistenteTelefono" type="tel" maxlength="25">
+        <button class="btn btn-primary full" type="submit">Registrar asistencia</button>
+        <p id="mensajeAsistente" class="form-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/admin-iglesia.js"></script>
+</body>
+</html>
